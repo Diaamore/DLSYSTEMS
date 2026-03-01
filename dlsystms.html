@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark" data-lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>DLSYSTEMS | Social Media Design</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --accent:#00d4ff;--accent2:#7b2fff;--gold:#ffb800;
+  --danger:#ff4757;--success:#2ed573;--warn:#ff9f43;
+  --r:20px;--rs:12px;--tr:0.3s cubic-bezier(0.4,0,0.2,1);
+}
+[data-theme="dark"]{
+  --bg:#05080f;--bg2:#0a0f1e;--bg3:#0d1426;--bg4:#111827;
+  --sf:rgba(255,255,255,0.04);--sfh:rgba(255,255,255,0.07);
+  --bd:rgba(255,255,255,0.08);--bdh:rgba(0,212,255,0.35);
+  --tx:#e8eaf6;--tx2:#b0b8d4;--tx3:#6b7a9e;
+  --sh:0 20px 60px rgba(0,0,0,0.5);--gw:0 0 40px rgba(0,212,255,0.12);
+  --nb:rgba(5,8,15,0.85);
+}
+[data-theme="light"]{
+  --bg:#f0f4ff;--bg2:#e4eaf8;--bg3:#dde4f5;--bg4:#d0d9f0;
+  --sf:rgba(255,255,255,0.78);--sfh:rgba(255,255,255,0.96);
+  --bd:rgba(0,0,0,0.08);--bdh:rgba(0,150,200,0.4);
+  --tx:#0d1426;--tx2:#3a4a6b;--tx3:#6b7a9e;
+  --sh:0 20px 60px rgba(0,0,100,0.08);--gw:0 0 40px rgba(0,150,200,0.1);
+  --nb:rgba(240,244,255,0.9);
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--tx);overflow-x:hidden;line-height:1.7;transition:background var(--tr),color var(--tr)}
+body,[data-lang="en"] *,[data-lang="es"] *,[data-lang="it"] *,[data-lang="ru"] *{font-family:'Plus Jakarta Sans',sans-serif}
+[data-lang="ar"] *{font-family:'Cairo',sans-serif!important}
+[data-lang="ar"]{direction:rtl}
+[data-lang="en"],[data-lang="es"],[data-lang="ru"],[data-lang="it"]{direction:ltr}
+
+/* BG */
+.bg-mesh{position:fixed;inset:0;pointer-events:none;z-index:0}
+[data-theme="dark"] .bg-mesh{background:radial-gradient(ellipse 80% 50% at 15% 10%,rgba(123,47,255,.14) 0%,transparent 60%),radial-gradient(ellipse 60% 50% at 85% 80%,rgba(0,212,255,.1) 0%,transparent 60%)}
+[data-theme="light"] .bg-mesh{background:radial-gradient(ellipse 80% 50% at 15% 10%,rgba(123,47,255,.06) 0%,transparent 60%),radial-gradient(ellipse 60% 50% at 85% 80%,rgba(0,180,220,.07) 0%,transparent 60%)}
+.particles{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.particle{position:absolute;border-radius:50%;opacity:0;animation:floatUp var(--dur) var(--delay) infinite ease-in-out}
+@keyframes floatUp{0%{opacity:0;transform:translateY(100vh) scale(0)}10%{opacity:.6}90%{opacity:.15}100%{opacity:0;transform:translateY(-10vh) scale(1.5)}}
+[data-theme="light"] .particles{opacity:.2}
+
+/* HEADER */
+header{position:fixed;top:0;left:0;right:0;z-index:200;padding:13px 28px;display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--nb);backdrop-filter:blur(24px);border-bottom:1px solid var(--bd);transition:all var(--tr)}
+.logo{font-size:1.45rem;font-weight:800;white-space:nowrap;flex-shrink:0;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.logo sup{font-size:.52rem;-webkit-text-fill-color:var(--gold);color:var(--gold);vertical-align:super}
+nav{display:flex;align-items:center;gap:4px}
+nav a{color:var(--tx3);text-decoration:none;font-size:.86rem;font-weight:600;padding:6px 10px;border-radius:8px;transition:all var(--tr);white-space:nowrap}
+nav a:hover{color:var(--accent);background:rgba(0,212,255,.08)}
+.nav-cta{background:linear-gradient(135deg,var(--accent),var(--accent2))!important;color:#fff!important;-webkit-text-fill-color:#fff!important;padding:8px 18px!important;border-radius:50px!important;font-weight:700!important}
+.nav-cta:hover{opacity:.9!important;transform:translateY(-1px)!important}
+.hc{display:flex;align-items:center;gap:7px;flex-shrink:0}
+.lang-sel{background:var(--sf);border:1px solid var(--bd);color:var(--tx2);padding:7px 28px 7px 11px;border-radius:10px;font-size:.8rem;font-weight:700;font-family:inherit;cursor:pointer;outline:none;-webkit-appearance:none;appearance:none;transition:all var(--tr);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%236b7a9e'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 9px center}
+[data-lang="ar"] .lang-sel{padding:7px 11px 7px 28px;background-position:left 9px center}
+.lang-sel:hover{border-color:var(--accent);color:var(--accent)}
+.ctrl-btn{background:var(--sf);border:1px solid var(--bd);color:var(--tx2);padding:7px 12px;border-radius:10px;font-size:.8rem;font-weight:700;font-family:inherit;cursor:pointer;transition:all var(--tr);display:flex;align-items:center;gap:5px;white-space:nowrap}
+.ctrl-btn:hover{border-color:var(--accent);color:var(--accent);background:rgba(0,212,255,.07)}
+.hamburger{display:none;background:var(--sf);border:1px solid var(--bd);width:38px;height:38px;border-radius:9px;align-items:center;justify-content:center;cursor:pointer;flex-direction:column;gap:4px;flex-shrink:0}
+.hamburger span{display:block;width:17px;height:2px;background:var(--tx);border-radius:2px;transition:all .3s}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(4px,4px)}
+.hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(4px,-4px)}
+.mob-nav{display:none;position:fixed;top:63px;left:0;right:0;background:var(--nb);backdrop-filter:blur(24px);border-bottom:1px solid var(--bd);padding:14px 20px;z-index:199;flex-direction:column;gap:6px;transform:translateY(-8px);opacity:0;transition:all .3s;pointer-events:none}
+.mob-nav.open{transform:translateY(0);opacity:1;pointer-events:all}
+.mob-nav a{color:var(--tx2);text-decoration:none;font-size:.95rem;font-weight:600;padding:11px 14px;border-radius:10px;transition:all var(--tr)}
+.mob-nav a:hover{color:var(--accent);background:rgba(0,212,255,.07)}
+
+/* HERO */
+.hero{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:110px 24px 70px}
+.hero-badge{display:inline-flex;align-items:center;gap:9px;background:var(--sf);border:1px solid var(--bd);border-radius:50px;padding:7px 20px;font-size:.83rem;color:var(--accent);font-weight:700;margin-bottom:28px;backdrop-filter:blur(10px);animation:fdDown .8s ease both}
+.bdot{width:7px;height:7px;background:var(--accent);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.5)}}
+.hero h1{font-size:clamp(1.9rem,5.5vw,5rem);font-weight:800;line-height:1.15;letter-spacing:-1px;margin-bottom:20px;animation:fdDown .8s .2s ease both}
+.gt{background:linear-gradient(135deg,var(--accent) 0%,var(--accent2) 50%,var(--gold) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;background-size:200%;animation:gShift 4s ease infinite}
+@keyframes gShift{0%,100%{background-position:0%}50%{background-position:100%}}
+.hero p{max-width:600px;font-size:1.05rem;color:var(--tx2);margin-bottom:36px;animation:fdDown .8s .4s ease both;font-weight:400}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;animation:fdDown .8s .6s ease both}
+.btn-p{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border:none;padding:14px 32px;border-radius:50px;font-size:.95rem;font-weight:700;font-family:inherit;cursor:pointer;transition:transform var(--tr),box-shadow var(--tr);box-shadow:0 8px 28px rgba(0,212,255,.2)}
+.btn-p:hover{transform:translateY(-3px);box-shadow:0 16px 38px rgba(0,212,255,.35)}
+.btn-o{background:var(--sf);border:1px solid var(--bd);color:var(--tx);padding:14px 32px;border-radius:50px;font-size:.95rem;font-weight:700;font-family:inherit;cursor:pointer;backdrop-filter:blur(10px);transition:all var(--tr)}
+.btn-o:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-3px)}
+.hero-stats{display:flex;gap:36px;margin-top:56px;flex-wrap:wrap;justify-content:center;animation:fdDown .8s .8s ease both}
+.stat{text-align:center}
+.stat strong{display:block;font-size:1.9rem;font-weight:800;color:var(--accent)}
+.stat span{font-size:.78rem;color:var(--tx3);font-weight:600;text-transform:uppercase;letter-spacing:.8px}
+@keyframes fdDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
+
+/* MARQUEE */
+.mq-strip{position:relative;z-index:1;overflow:hidden;padding:17px 0;border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);background:var(--sf)}
+.mq-track{display:flex;gap:44px;width:max-content;animation:mq 22s linear infinite}
+[data-lang="ar"] .mq-track{animation-direction:reverse}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.mq-item{display:flex;align-items:center;gap:10px;color:var(--tx2);font-size:.84rem;font-weight:600;white-space:nowrap}
+.mq-item span{color:var(--accent)}
+
+/* SECTIONS */
+.sec{position:relative;z-index:1;padding:88px 24px;max-width:1280px;margin:0 auto}
+.sec-lbl{text-align:center;margin-bottom:58px}
+.sec-lbl h2{font-size:clamp(1.7rem,3.8vw,2.9rem);font-weight:800;margin-bottom:12px;letter-spacing:-.5px}
+.sec-lbl p{color:var(--tx2);font-size:.97rem;max-width:500px;margin:0 auto}
+
+/* FEATURES */
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:18px}
+.fc{background:var(--sf);border:1px solid var(--bd);border-radius:var(--r);padding:28px;backdrop-filter:blur(20px);transition:all var(--tr);opacity:0;transform:translateY(28px)}
+.fc.vis{opacity:1;transform:translateY(0)}
+.fc:hover{transform:translateY(-7px);border-color:var(--bdh);box-shadow:var(--gw),var(--sh);background:var(--sfh)}
+.fi{width:52px;height:52px;background:linear-gradient(135deg,rgba(0,212,255,.12),rgba(123,47,255,.12));border:1px solid rgba(0,212,255,.18);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:17px}
+.fc h3{font-size:1rem;font-weight:700;margin-bottom:8px}
+.fc p{color:var(--tx2);font-size:.87rem;line-height:1.7}
+
+/* TESTIMONIALS */
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:18px}
+.tc{background:var(--sf);border:1px solid var(--bd);border-radius:var(--r);padding:26px;backdrop-filter:blur(20px);transition:all var(--tr);opacity:0;transform:translateY(28px)}
+.tc.vis{opacity:1;transform:translateY(0)}
+.tc:hover{transform:translateY(-6px);border-color:var(--bdh)}
+.stars{font-size:.9rem;margin-bottom:12px;letter-spacing:1px}
+.sf{color:var(--gold)}.se{color:var(--tx3)}
+.tc blockquote{color:var(--tx2);font-size:.9rem;line-height:1.75;margin-bottom:18px;font-style:italic}
+.tc-auth{display:flex;align-items:center;gap:11px}
+.av{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.15rem;flex-shrink:0}
+.tc-name{font-weight:700;font-size:.88rem}
+.tc-role{color:var(--tx3);font-size:.76rem}
+
+/* PRICING */
+.price-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(258px,1fr));gap:22px;margin-top:60px}
+.pc{background:var(--sf);border:1px solid var(--bd);border-radius:24px;padding:34px 26px;backdrop-filter:blur(30px);position:relative;cursor:pointer;transition:all var(--tr);overflow:hidden;opacity:0;transform:translateY(28px)}
+.pc.vis{opacity:1;transform:translateY(0)}
+.pc::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));transform:scaleX(0);transform-origin:left;transition:transform .4s ease}
+.pc:hover{transform:translateY(-11px)!important;border-color:var(--bdh);box-shadow:0 24px 65px rgba(0,212,255,.13)}
+.pc:hover::after{transform:scaleX(1)}
+.pc.pop{border-color:rgba(0,212,255,.4);background:rgba(0,212,255,.045);box-shadow:0 0 55px rgba(0,212,255,.09)}
+.pc.pop::after{transform:scaleX(1)}
+.pc.vip{border-color:rgba(255,184,0,.4);background:rgba(255,184,0,.035)}
+.pc.vip::after{background:linear-gradient(90deg,var(--gold),#ff6b35);transform:scaleX(1)}
+.pc.vip:hover{box-shadow:0 24px 65px rgba(255,184,0,.15);border-color:rgba(255,184,0,.55)}
+.pbadge{position:absolute;top:16px;padding:4px 12px;border-radius:50px;font-size:.7rem;font-weight:800;letter-spacing:.4px}
+[data-lang="ar"] .pbadge{left:16px}[data-lang="en"] .pbadge,[data-lang="es"] .pbadge,[data-lang="ru"] .pbadge,[data-lang="it"] .pbadge{right:16px}
+.pop .pbadge{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff}
+.vip .pbadge{background:linear-gradient(135deg,var(--gold),#ff6b35);color:#000}
+.pname{font-size:.87rem;font-weight:600;color:var(--tx3);margin-bottom:6px;margin-top:26px}
+.pposts{font-size:2.4rem;font-weight:800;line-height:1;letter-spacing:-1px}
+.pposts sub{font-size:.85rem;font-weight:400;color:var(--tx3);letter-spacing:0}
+.pprice{font-size:1.8rem;font-weight:800;color:var(--accent);margin:14px 0 0;letter-spacing:-.5px}
+.vip .pprice{color:var(--gold)}
+.pprice sub{font-size:.78rem;font-weight:400;color:var(--tx3)}
+.pdiv{height:1px;background:var(--bd);margin:18px 0}
+.pfeats{list-style:none}
+.pfeats li{padding:6px 0;font-size:.86rem;color:var(--tx2);display:flex;align-items:center;gap:9px}
+.pfeats li::before{content:'✓';color:var(--accent);font-weight:900;flex-shrink:0}
+.vip .pfeats li::before{color:var(--gold)}
+.pbtn{width:100%;margin-top:24px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border:none;padding:13px;border-radius:12px;font-size:.92rem;font-weight:700;font-family:inherit;cursor:pointer;transition:transform var(--tr),box-shadow var(--tr)}
+.pbtn:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(0,212,255,.3)}
+.vip .pbtn{background:linear-gradient(135deg,var(--gold),#ff6b35);color:#000}
+.vip .pbtn:hover{box-shadow:0 10px 28px rgba(255,184,0,.3)}
+.psave{text-align:center;margin-top:9px;font-size:.76rem;color:var(--success);font-weight:700}
+
+/* CONTACT */
+.contact-wrap{position:relative;z-index:1;padding:0 24px 96px;max-width:900px;margin:0 auto;text-align:center}
+.contact-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px;margin-top:40px}
+.ccard{background:var(--sf);border:1px solid var(--bd);border-radius:20px;padding:28px 20px;backdrop-filter:blur(20px);text-decoration:none;transition:all var(--tr);display:flex;flex-direction:column;align-items:center;gap:12px;opacity:0;transform:translateY(22px)}
+.ccard.vis{opacity:1;transform:translateY(0)}
+.ccard:hover{transform:translateY(-8px)!important}
+.ccard.wa{border-color:rgba(37,211,102,.2)}.ccard.wa:hover{border-color:rgba(37,211,102,.5);box-shadow:0 16px 45px rgba(37,211,102,.12)}
+.ccard.tg{border-color:rgba(0,136,204,.2)}.ccard.tg:hover{border-color:rgba(0,136,204,.5);box-shadow:0 16px 45px rgba(0,136,204,.12)}
+.ccard.fb{border-color:rgba(66,103,178,.2)}.ccard.fb:hover{border-color:rgba(66,103,178,.5);box-shadow:0 16px 45px rgba(66,103,178,.12)}
+.cc-icon{width:58px;height:58px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.7rem}
+.wa .cc-icon{background:rgba(37,211,102,.15)}.tg .cc-icon{background:rgba(0,136,204,.15)}.fb .cc-icon{background:rgba(66,103,178,.15)}
+.cc-name{font-weight:800;font-size:1rem;color:var(--tx)}
+.cc-handle{font-size:.8rem;color:var(--tx3)}
+.cc-btn{margin-top:4px;padding:8px 18px;border-radius:50px;font-size:.78rem;font-weight:700;font-family:inherit;border:none;cursor:pointer;transition:opacity var(--tr)}
+.wa .cc-btn{background:rgba(37,211,102,.15);color:#25d366}.tg .cc-btn{background:rgba(0,136,204,.15);color:#0088cc}.fb .cc-btn{background:rgba(66,103,178,.15);color:#4267B2}
+
+/* CTA */
+.cta-band{position:relative;z-index:1;margin:0 24px 80px;border-radius:26px;background:linear-gradient(135deg,rgba(0,212,255,.08),rgba(123,47,255,.08));border:1px solid rgba(0,212,255,.18);padding:56px 36px;text-align:center;backdrop-filter:blur(20px)}
+.cta-band h2{font-size:clamp(1.5rem,3vw,2.5rem);font-weight:800;margin-bottom:12px}
+.cta-band p{color:var(--tx2);margin-bottom:28px;font-size:.97rem;max-width:480px;margin-left:auto;margin-right:auto}
+footer{position:relative;z-index:1;text-align:center;padding:32px 24px;border-top:1px solid var(--bd);color:var(--tx3);font-size:.82rem}
+footer span{color:var(--accent)}
+
+/* ═══ MULTI-STEP MODAL ═══ */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.65);backdrop-filter:blur(10px);z-index:500;display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;pointer-events:none;transition:opacity .3s}
+.overlay.open{opacity:1;pointer-events:all}
+.mbox{background:var(--bg3);border:1px solid var(--bd);border-radius:26px;width:100%;max-width:500px;max-height:92vh;overflow-y:auto;transform:scale(.88) translateY(20px);transition:transform .35s cubic-bezier(.34,1.56,.64,1);position:relative}
+.overlay.open .mbox{transform:scale(1) translateY(0)}
+.mx-btn{position:absolute;top:14px;background:var(--sf);border:1px solid var(--bd);color:var(--tx3);width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1rem;transition:all var(--tr);z-index:10}
+[data-lang="ar"] .mx-btn{left:14px}
+[data-lang="en"] .mx-btn,[data-lang="es"] .mx-btn,[data-lang="ru"] .mx-btn,[data-lang="it"] .mx-btn{right:14px}
+.mx-btn:hover{color:var(--tx);border-color:var(--tx)}
+
+/* STEP INDICATOR */
+.steps-bar{display:flex;align-items:center;justify-content:center;gap:0;padding:24px 32px 0;margin-bottom:4px}
+.step-dot{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:800;border:2px solid var(--bd);color:var(--tx3);transition:all .4s;flex-shrink:0;position:relative;z-index:1;background:var(--bg3)}
+.step-dot.active{border-color:var(--accent);color:var(--accent);box-shadow:0 0 0 4px rgba(0,212,255,.12)}
+.step-dot.done{background:linear-gradient(135deg,var(--accent),var(--accent2));border-color:transparent;color:#fff}
+.step-dot.vip-done{background:linear-gradient(135deg,var(--gold),#ff6b35);border-color:transparent;color:#000}
+.step-line{flex:1;height:2px;background:var(--bd);transition:background .4s;max-width:60px}
+.step-line.done{background:linear-gradient(90deg,var(--accent),var(--accent2))}
+
+/* STEP CONTENT */
+.step-wrap{display:none;padding:24px 32px 32px}
+.step-wrap.active{display:block}
+.step-title{font-size:1.3rem;font-weight:800;margin-bottom:5px;text-align:center}
+.step-sub{font-size:.85rem;color:var(--tx2);text-align:center;margin-bottom:22px}
+.step-sub span{color:var(--accent);font-weight:700}
+
+/* FORM */
+.fg{margin-bottom:15px}
+.fg label{display:block;font-size:.82rem;font-weight:700;color:var(--tx2);margin-bottom:6px}
+.fg input,.fg select,.fg textarea{width:100%;padding:12px 14px;background:var(--sf);border:1px solid var(--bd);border-radius:var(--rs);color:var(--tx);font-family:inherit;font-size:.92rem;transition:border-color var(--tr),box-shadow var(--tr);outline:none;-webkit-appearance:none}
+.fg input:focus,.fg select:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(0,212,255,.11)}
+.fg input::placeholder{color:var(--tx3)}
+.fg.err input,.fg.err select{border-color:var(--danger);box-shadow:0 0 0 3px rgba(255,71,87,.1)}
+.ferr{color:var(--danger);font-size:.76rem;margin-top:4px;display:none}
+.fg.err .ferr{display:block}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+
+/* Phone with flag prefix */
+.phone-wrap{display:flex;gap:8px;align-items:stretch}
+.phone-prefix{
+  background:var(--sf);border:1px solid var(--bd);border-radius:var(--rs);
+  padding:0 12px;display:flex;align-items:center;gap:6px;
+  font-size:.88rem;font-weight:700;color:var(--tx2);white-space:nowrap;flex-shrink:0;
+  min-width:90px;transition:all var(--tr);
+}
+.phone-prefix.active{border-color:var(--accent);color:var(--accent)}
+.phone-input-wrap{flex:1}
+.phone-input-wrap input{border-radius:var(--rs)!important}
+.phone-hint{font-size:.74rem;color:var(--tx3);margin-top:5px}
+.phone-hint.valid{color:var(--success)}
+.phone-hint.invalid{color:var(--danger)}
+
+/* OTP */
+.otp-row{display:flex;gap:10px;justify-content:center;margin:20px 0}
+.otp-box{width:52px;height:56px;text-align:center;font-size:1.4rem;font-weight:800;border-radius:14px;border:2px solid var(--bd);background:var(--sf);color:var(--tx);outline:none;transition:all var(--tr);font-family:inherit}
+.otp-box:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(0,212,255,.15)}
+.otp-box.filled{border-color:var(--accent);background:rgba(0,212,255,.06)}
+.otp-box.error{border-color:var(--danger);background:rgba(255,71,87,.06)}
+.otp-timer{text-align:center;font-size:.82rem;color:var(--tx3);margin-bottom:8px}
+.otp-timer span{color:var(--accent);font-weight:700}
+.otp-resend{background:none;border:none;color:var(--accent);font-size:.82rem;font-weight:700;cursor:pointer;font-family:inherit;padding:0}
+.otp-resend:hover{text-decoration:underline}
+.otp-resend:disabled{color:var(--tx3);cursor:not-allowed;text-decoration:none}
+.otp-msg{text-align:center;font-size:.84rem;margin-top:6px;min-height:20px}
+
+/* Payment Method */
+.pm-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:22px}
+.pm-card{background:var(--sf);border:2px solid var(--bd);border-radius:14px;padding:16px 14px;cursor:pointer;transition:all var(--tr);display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center}
+.pm-card:hover{border-color:var(--accent);background:rgba(0,212,255,.05)}
+.pm-card.selected{border-color:var(--accent);background:rgba(0,212,255,.08);box-shadow:0 0 0 3px rgba(0,212,255,.12)}
+.pm-card.selected-vip{border-color:var(--gold);background:rgba(255,184,0,.07);box-shadow:0 0 0 3px rgba(255,184,0,.12)}
+.pm-icon{font-size:1.8rem}
+.pm-name{font-size:.82rem;font-weight:700;color:var(--tx)}
+.pm-check{width:20px;height:20px;border-radius:50%;border:2px solid var(--bd);margin-top:2px;transition:all var(--tr);display:flex;align-items:center;justify-content:center}
+.pm-card.selected .pm-check,.pm-card.selected-vip .pm-check{background:var(--accent);border-color:var(--accent);color:#fff}
+.pm-card.selected-vip .pm-check{background:var(--gold);border-color:var(--gold);color:#000}
+
+/* Card Input */
+.card-section{display:none}
+.card-section.show{display:block}
+.card-number-wrap{position:relative}
+.card-number-wrap input{padding-right:70px!important;letter-spacing:2px;font-family:monospace}
+[data-lang="ar"] .card-number-wrap input{padding-right:14px!important;padding-left:70px!important;letter-spacing:2px}
+.card-brands{position:absolute;top:50%;right:12px;transform:translateY(-50%);display:flex;gap:4px}
+[data-lang="ar"] .card-brands{right:auto;left:12px}
+.card-brand{font-size:1.1rem;opacity:.3;transition:opacity .3s}
+.card-brand.active{opacity:1}
+.card-exp-cvc{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.secure-badge{display:flex;align-items:center;gap:6px;font-size:.75rem;color:var(--tx3);margin-top:8px;justify-content:center}
+.secure-badge::before{content:'🔒'}
+
+/* Plan summary compact */
+.ps-sum{background:var(--sf);border:1px solid var(--bd);border-radius:var(--rs);padding:14px 16px;margin-bottom:18px}
+.ps-row{display:flex;justify-content:space-between;align-items:center;padding:4px 0;font-size:.85rem}
+.ps-row span:first-child{color:var(--tx3)}.ps-row span:last-child{font-weight:700;color:var(--tx)}
+.ps-price{border-top:1px solid var(--bd);margin-top:6px;padding-top:8px;font-size:1rem}
+.ps-price span:last-child{color:var(--accent);font-size:1.1rem;font-weight:800}
+.ps-sum.vip-s .ps-price span:last-child{color:var(--gold)}
+
+/* Buttons */
+.sbtn{width:100%;margin-top:8px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border:none;padding:14px;border-radius:var(--rs);font-size:.95rem;font-weight:700;font-family:inherit;cursor:pointer;transition:transform var(--tr),box-shadow var(--tr),opacity var(--tr);box-shadow:0 8px 22px rgba(0,212,255,.18)}
+.sbtn:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(0,212,255,.3)}
+.sbtn:disabled{opacity:.6;cursor:not-allowed;transform:none}
+.sbtn.vs{background:linear-gradient(135deg,var(--gold),#ff6b35);color:#000}
+.sbtn.vs:hover{box-shadow:0 12px 30px rgba(255,184,0,.3)}
+.sbtn-back{width:100%;margin-top:8px;background:var(--sf);border:1px solid var(--bd);color:var(--tx2);padding:12px;border-radius:var(--rs);font-size:.88rem;font-weight:700;font-family:inherit;cursor:pointer;transition:all var(--tr)}
+.sbtn-back:hover{border-color:var(--tx2);color:var(--tx)}
+
+/* Success */
+.sw{padding:44px 32px;text-align:center}
+.si{font-size:3.8rem;margin-bottom:14px;animation:popIn .5s cubic-bezier(.34,1.56,.64,1) both}
+@keyframes popIn{from{transform:scale(0) rotate(-10deg)}to{transform:scale(1) rotate(0)}}
+.sw h3{font-size:1.5rem;font-weight:800;margin-bottom:9px}
+.sw>p{color:var(--tx2);font-size:.92rem;line-height:1.7}
+.sd{background:var(--sf);border:1px solid var(--bd);border-radius:12px;padding:14px 18px;margin:18px 0}
+[data-lang="ar"] .sd{text-align:right}[data-lang="en"] .sd,[data-lang="es"] .sd,[data-lang="ru"] .sd,[data-lang="it"] .sd{text-align:left}
+.sd p{font-size:.86rem;color:var(--tx2);margin-bottom:5px}.sd p:last-child{margin:0}.sd strong{color:var(--tx)}
+.sc{width:100%;background:var(--sf);border:1px solid var(--bd);color:var(--tx);padding:12px;border-radius:11px;font-size:.92rem;font-weight:700;font-family:inherit;cursor:pointer;margin-top:6px;transition:all var(--tr)}
+.sc:hover{border-color:var(--accent);color:var(--accent)}
+
+/* Email verification tick */
+.email-status{display:flex;align-items:center;gap:6px;font-size:.78rem;margin-top:5px}
+.email-status.ok{color:var(--success)}.email-status.bad{color:var(--danger)}
+
+/* RESPONSIVE */
+@media(max-width:900px){nav{display:none}.hamburger{display:flex}.mob-nav{display:flex}.sec{padding:60px 18px}}
+@media(max-width:640px){
+  header{padding:11px 16px}.hero{padding:95px 16px 56px}.hero h1{font-size:clamp(1.75rem,7.5vw,2.6rem)}
+  .hero-btns{flex-direction:column;align-items:center}.btn-p,.btn-o{width:100%;max-width:290px}
+  .hero-stats{gap:20px}.stat strong{font-size:1.5rem}
+  .price-grid{grid-template-columns:1fr;max-width:390px;margin:40px auto 0}
+  .frow{grid-template-columns:1fr}.step-wrap{padding:20px 18px 24px}
+  .steps-bar{padding:20px 18px 0}.otp-box{width:44px;height:50px;font-size:1.2rem}
+  .cta-band{padding:38px 20px;margin:0 10px 60px}.pm-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:380px){.logo{font-size:1.15rem}}
+</style>
+</head>
+<body>
+<div class="bg-mesh"></div>
+<div class="particles" id="particles"></div>
+
+<!-- HEADER -->
+<header id="hdr">
+  <div class="logo">DL<sup>SYSTEMS</sup></div>
+  <nav>
+    <a href="#features" data-i="n.feat">Features</a>
+    <a href="#reviews" data-i="n.rev">Reviews</a>
+    <a href="#pricing" data-i="n.price">Pricing</a>
+    <a href="#contact" data-i="n.contact">Contact</a>
+    <a href="#pricing" class="nav-cta" data-i="n.start">Get Started</a>
+  </nav>
+  <div class="hc">
+    <select class="lang-sel" id="langSel" onchange="setLang(this.value)">
+      <option value="en">🇬🇧 EN</option>
+      <option value="ar">🇸🇦 AR</option>
+      <option value="es">🇪🇸 ES</option>
+      <option value="ru">🇷🇺 RU</option>
+      <option value="it">🇮🇹 IT</option>
+    </select>
+    <button class="ctrl-btn" onclick="toggleTheme()"><span id="thIco">☀️</span><span id="thLbl">Light</span></button>
+    <button class="hamburger" id="ham" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<div class="mob-nav" id="mobNav">
+  <a href="#features" onclick="closeMenu()" data-i="n.feat">Features</a>
+  <a href="#reviews" onclick="closeMenu()" data-i="n.rev">Reviews</a>
+  <a href="#pricing" onclick="closeMenu()" data-i="n.price">Pricing</a>
+  <a href="#contact" onclick="closeMenu()" data-i="n.contact">Contact</a>
+  <a href="#pricing" onclick="closeMenu()" style="color:var(--accent);font-weight:800" data-i="n.start">Get Started →</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge"><div class="bdot"></div><span data-i="h.badge">🚀 Professional Social Media Design</span></div>
+  <h1><span data-i="h.h1a">Transform your ideas into</span><br><span class="gt" data-i="h.h1b">stunning designs</span><br><span data-i="h.h1c">in seconds</span></h1>
+  <p data-i="h.sub">We craft eye-catching posts that amplify your brand, boost engagement, and turn followers into loyal customers.</p>
+  <div class="hero-btns">
+    <button class="btn-p" onclick="goTo('pricing')" data-i="h.c1">View Packages</button>
+    <button class="btn-o" onclick="goTo('features')" data-i="h.c2">Learn More</button>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><strong>500+</strong><span data-i="s.cli">Happy Clients</span></div>
+    <div class="stat"><strong>10K+</strong><span data-i="s.pos">Posts Created</span></div>
+    <div class="stat"><strong>98%</strong><span data-i="s.sat">Satisfaction</span></div>
+    <div class="stat"><strong>24/7</strong><span data-i="s.sup">Support</span></div>
+  </div>
+</section>
+<div class="mq-strip"><div class="mq-track" id="mqTrack"></div></div>
+
+<!-- FEATURES -->
+<section class="sec" id="features">
+  <div class="sec-lbl">
+    <h2><span data-i="f.t">Why Choose</span> <span class="gt">DLSYSTEMS?</span></h2>
+    <p data-i="f.s">Everything you need to dominate social media</p>
+  </div>
+  <div class="feat-grid" id="featGrid"></div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="sec" id="reviews">
+  <div class="sec-lbl">
+    <h2><span class="gt" data-i="r.t">What Clients Say</span></h2>
+    <p data-i="r.s">Honest words from real clients</p>
+  </div>
+  <div class="testi-grid" id="testiGrid"></div>
+</section>
+
+<!-- PRICING -->
+<section class="sec" id="pricing">
+  <div class="sec-lbl">
+    <h2><span data-i="p.t">Simple</span> <span class="gt" data-i="p.t2">Pricing</span></h2>
+    <p data-i="p.s">Choose the plan that fits — scale anytime</p>
+  </div>
+  <div class="price-grid" id="priceGrid"></div>
+</section>
+
+<!-- CONTACT -->
+<div class="contact-wrap" id="contact">
+  <div class="sec-lbl"><h2 data-i="c.t">Get In Touch</h2><p data-i="c.s">Reach us on your preferred platform</p></div>
+  <div class="contact-cards">
+    <a class="ccard wa" id="waCard" href="#" target="_blank" rel="noopener" onclick="return handleContact('wa')">
+      <div class="cc-icon">📱</div><div class="cc-name">WhatsApp</div>
+      <div class="cc-handle" data-i="c.wa_lbl">Chat with us</div>
+      <button class="cc-btn" data-i="c.wa_btn">Chat Now</button>
+    </a>
+    <a class="ccard tg" id="tgCard" href="#" target="_blank" rel="noopener" onclick="return handleContact('tg')">
+      <div class="cc-icon">✈️</div><div class="cc-name">Telegram</div>
+      <div class="cc-handle" data-i="c.tg_lbl">Message us</div>
+      <button class="cc-btn" data-i="c.tg_btn">Message Us</button>
+    </a>
+    <a class="ccard fb" id="fbCard" href="https://www.facebook.com/DLSYSTEMS/" target="https://www.facebook.com/DLSYSTEMS/" rel="noopener" onclick="return handleContact('fb')">
+      <div class="cc-icon">👤</div><div class="cc-name">Facebook</div>
+      <div class="cc-handle" data-i="c.fb_lbl">Follow our page</div>
+      <button class="cc-btn" data-i="c.fb_btn">Follow Us</button>
+    </a>
+  </div>
+</div>
+
+<div class="cta-band">
+  <h2><span data-i="ct.h">Ready to </span><span class="gt" data-i="ct.h2">level up</span><span data-i="ct.h3"> your brand?</span></h2>
+  <p data-i="ct.s">No contracts, cancel anytime.</p>
+  <button class="btn-p" onclick="goTo('pricing')" data-i="ct.b">Start Today →</button>
+</div>
+<footer><p>Made with ❤️ by <span>DLSYSTEMS</span> &copy; 2025 — <span data-i="ft.r">All rights reserved</span></p></footer>
+
+<!-- ═══ MULTI-STEP MODAL ═══ -->
+<div class="overlay" id="regOv">
+  <div class="mbox" id="regBox">
+    <button class="mx-btn" onclick="closeReg()">✕</button>
+
+    <!-- Step Indicator -->
+    <div class="steps-bar" id="stepsBar">
+      <div class="step-dot active" id="sd1">1</div>
+      <div class="step-line" id="sl1"></div>
+      <div class="step-dot" id="sd2">2</div>
+      <div class="step-line" id="sl2"></div>
+      <div class="step-dot" id="sd3">3</div>
+      <div class="step-line" id="sl3"></div>
+      <div class="step-dot" id="sd4">4</div>
+    </div>
+
+    <!-- STEP 1: Account Info -->
+    <div class="step-wrap active" id="step1">
+      <div class="step-title" data-i="m.t">Create Your Account</div>
+      <div class="step-sub"><span data-i="m.s">Subscribe to</span> <span id="mPlanName" style="color:var(--accent);font-weight:700">—</span></div>
+      <div class="ps-sum" id="mSum"></div>
+      <div class="frow">
+        <div class="fg" id="fg-fn"><label data-i="fm.fn">First Name</label><input type="text" id="i-fn" placeholder="John"><div class="ferr" data-i="e.fn">Required</div></div>
+        <div class="fg" id="fg-ln"><label data-i="fm.ln">Last Name</label><input type="text" id="i-ln" placeholder="Doe"><div class="ferr" data-i="e.ln">Required</div></div>
+      </div>
+      <div class="fg" id="fg-em">
+        <label data-i="fm.em">Email</label>
+        <input type="email" id="i-em" placeholder="you@mailprovider.com" oninput="checkEmail()">
+        <div id="emailStatus" class="email-status" style="display:none"></div>
+        <div class="ferr" data-i="e.em">Valid email required</div>
+      </div>
+      <div class="fg" id="fg-co">
+        <label data-i="fm.co">Country</label>
+        <select id="i-co" onchange="onCountryChange()">
+          <option value="">—</option>
+          <option value="EG" data-dial="+20" data-flag="🇪🇬" data-len="10" data-fmt="1XX XXX XXXX">🇪🇬 Egypt</option>
+          <option value="SA" data-dial="+966" data-flag="🇸🇦" data-len="9" data-fmt="5X XXX XXXX">🇸🇦 Saudi Arabia</option>
+          <option value="AE" data-dial="+971" data-flag="🇦🇪" data-len="9" data-fmt="5X XXX XXXX">🇦🇪 UAE</option>
+          <option value="KW" data-dial="+965" data-flag="🇰🇼" data-len="8" data-fmt="XXXX XXXX">🇰🇼 Kuwait</option>
+          <option value="QA" data-dial="+974" data-flag="🇶🇦" data-len="8" data-fmt="XXXX XXXX">🇶🇦 Qatar</option>
+          <option value="BH" data-dial="+973" data-flag="🇧🇭" data-len="8" data-fmt="XXXX XXXX">🇧🇭 Bahrain</option>
+          <option value="OM" data-dial="+968" data-flag="🇴🇲" data-len="8" data-fmt="XXXX XXXX">🇴🇲 Oman</option>
+          <option value="JO" data-dial="+962" data-flag="🇯🇴" data-len="9" data-fmt="7X XXX XXXX">🇯🇴 Jordan</option>
+          <option value="LB" data-dial="+961" data-flag="🇱🇧" data-len="8" data-fmt="XXXX XXXX">🇱🇧 Lebanon</option>
+          <option value="MA" data-dial="+212" data-flag="🇲🇦" data-len="9" data-fmt="6XX XXX XXX">🇲🇦 Morocco</option>
+          <option value="ES" data-dial="+34" data-flag="🇪🇸" data-len="9" data-fmt="XXX XXX XXX">🇪🇸 Spain</option>
+          <option value="IT" data-dial="+39" data-flag="🇮🇹" data-len="10" data-fmt="XXX XXX XXXX">🇮🇹 Italy</option>
+          <option value="RU" data-dial="+7" data-flag="🇷🇺" data-len="10" data-fmt="XXX XXX XX XX">🇷🇺 Russia</option>
+          <option value="OTHER" data-dial="+?" data-flag="🌍" data-len="7" data-fmt="">🌍 Other</option>
+        </select>
+        <div class="ferr" data-i="e.co">Required</div>
+      </div>
+      <div class="fg" id="fg-ph">
+        <label data-i="fm.ph">Phone Number</label>
+        <div class="phone-wrap">
+          <div class="phone-prefix" id="phonePfx">🌍 +?</div>
+          <div class="phone-input-wrap">
+            <input type="tel" id="i-ph" placeholder="Enter number" oninput="checkPhone()" inputmode="numeric">
+          </div>
+        </div>
+        <div class="phone-hint" id="phoneHint" data-i="ph.hint">Select your country first</div>
+        <div class="ferr" data-i="e.ph">Valid phone number required</div>
+      </div>
+      <div class="fg">
+        <label data-i="fm.biz">Business Name <small style="color:var(--tx3);font-weight:400" data-i="fm.opt">(optional)</small></label>
+        <input type="text" id="i-biz" placeholder="My Brand">
+      </div>
+      <button class="sbtn" id="step1Btn" onclick="goStep3()" data-i="m.next">Next →</button>
+    </div>
+
+    <!-- STEP 2: OTP Verification -->
+    <div class="step-wrap" id="step2">
+      <div class="step-title" data-i="otp.t">Verify Your Phone</div>
+      <div class="step-sub" id="otpDesc">We sent a 6-digit code to <span id="otpPhone"></span></div>
+      <div class="otp-row">
+        <input class="otp-box" type="text" maxlength="1" inputmode="numeric" id="otp0" oninput="otpInput(0)" onkeydown="otpKey(event,0)">
+        <input class="otp-box" type="text" maxlength="1" inputmode="numeric" id="otp1" oninput="otpInput(1)" onkeydown="otpKey(event,1)">
+        <input class="otp-box" type="text" maxlength="1" inputmode="numeric" id="otp2" oninput="otpInput(2)" onkeydown="otpKey(event,2)">
+        <input class="otp-box" type="text" maxlength="1" inputmode="numeric" id="otp3" oninput="otpInput(3)" onkeydown="otpKey(event,3)">
+        <input class="otp-box" type="text" maxlength="1" inputmode="numeric" id="otp4" oninput="otpInput(4)" onkeydown="otpKey(event,4)">
+        <input class="otp-box" type="text" maxlength="1" inputmode="numeric" id="otp5" oninput="otpInput(5)" onkeydown="otpKey(event,5)">
+      </div>
+      <div class="otp-timer" id="otpTimer"></div>
+      <div class="otp-msg" id="otpMsg"></div>
+      <button class="sbtn" id="step2Btn" onclick="verifyOtp()" data-i="otp.verify">Verify Code</button>
+      <button class="sbtn-back" onclick="goStepBack(1)" data-i="m.back">← Back</button>
+    </div>
+
+    <!-- STEP 3: Payment Method -->
+    <div class="step-wrap" id="step3">
+      <div class="step-title" data-i="pay.t">Choose Payment</div>
+      <div class="step-sub" id="paySubTitle">Select how you'd like to pay</div>
+      <div class="ps-sum" id="mSum3"></div>
+      <div class="pm-grid">
+        <div class="pm-card" id="pm-visa" onclick="selectPM('visa')">
+          <div class="pm-icon">💳</div>
+          <div class="pm-name">Visa / MC</div>
+          <div class="pm-check" id="pmck-visa"></div>
+        </div>
+        <div class="pm-card" id="pm-instapay" onclick="selectPM('instapay')">
+          <div class="pm-icon">⚡</div>
+          <div class="pm-name">InstaPay</div>
+          <div class="pm-check" id="pmck-instapay"></div>
+        </div>
+        <div class="pm-card" id="pm-vodafone" onclick="selectPM('vodafone')">
+          <div class="pm-icon">📲</div>
+          <div class="pm-name">Vodafone Cash</div>
+          <div class="pm-check" id="pmck-vodafone"></div>
+        </div>
+        <div class="pm-card" id="pm-bank" onclick="selectPM('bank')">
+          <div class="pm-icon">🏦</div>
+          <div class="pm-name" data-i="pay.bank">Bank Transfer</div>
+          <div class="pm-check" id="pmck-bank"></div>
+        </div>
+      </div>
+
+      <!-- VISA/MC Card Fields -->
+      <div class="card-section" id="cardSection">
+        <div class="fg" id="fg-cnum">
+          <label data-i="pay.cnum">Card Number</label>
+          <div class="card-number-wrap">
+            <input type="text" id="i-cnum" placeholder="0000 0000 0000 0000" maxlength="19" inputmode="numeric" oninput="formatCard()" autocomplete="cc-number">
+            <div class="card-brands">
+              <span class="card-brand" id="cb-visa" title="Visa">💳</span>
+              <span class="card-brand" id="cb-mc" title="Mastercard">🔴</span>
+            </div>
+          </div>
+          <div class="ferr" data-i="e.cnum">Valid card number required</div>
+        </div>
+        <div class="fg" id="fg-cname">
+          <label data-i="pay.cname">Cardholder Name</label>
+          <input type="text" id="i-cname" placeholder="JOHN DOE" style="text-transform:uppercase" data-i-ph="pay.cname_ph">
+          <div class="ferr" data-i="e.cname">Name required</div>
+        </div>
+        <div class="card-exp-cvc">
+          <div class="fg" id="fg-exp">
+            <label data-i="pay.exp">Expiry</label>
+            <input type="text" id="i-exp" placeholder="MM/YY" maxlength="5" inputmode="numeric" oninput="formatExp()">
+            <div class="ferr" data-i="e.exp">Valid expiry required</div>
+          </div>
+          <div class="fg" id="fg-cvc">
+            <label data-i="pay.cvc">CVV</label>
+            <input type="text" id="i-cvc" placeholder="•••" maxlength="4" inputmode="numeric">
+            <div class="ferr" data-i="e.cvc">CVV required</div>
+          </div>
+        </div>
+        <div class="secure-badge" data-i="pay.secure">Payments are encrypted and secure</div>
+      </div>
+
+      <!-- InstaPay / Vodafone / Bank Info -->
+      <div class="card-section" id="altPaySection" style="background:var(--sf);border:1px solid var(--bd);border-radius:14px;padding:16px">
+        <p id="altPayMsg" style="font-size:.88rem;color:var(--tx2);line-height:1.7"></p>
+      </div>
+
+      <button class="sbtn" id="step3Btn" onclick="goStep4()" data-i="pay.confirm">Confirm Payment →</button>
+      <button class="sbtn-back" onclick="goStepBack(2)" data-i="m.back">← Back</button>
+    </div>
+
+    <!-- STEP 4: Success -->
+    <div class="step-wrap" id="step4">
+      <div class="sw">
+        <div class="si">🎉</div>
+        <h3 id="sTitle" data-i="suc.t">Welcome aboard!</h3>
+        <p id="sMsg" data-i="suc.m">Our team will contact you within 24 hours.</p>
+        <div class="sd" id="sDetail"></div>
+        <button class="sc" onclick="closeReg()" data-i="m.done">Done ✓</button>
+      </div>
+    </div>
+
+  </div><!-- /mbox -->
+</div><!-- /overlay -->
+
+<script>
+/* ══════════════════════════════════════════
+   TRANSLATIONS
+══════════════════════════════════════════ */
+const T={
+  en:{
+    "n.feat":"Features","n.rev":"Reviews","n.price":"Pricing","n.contact":"Contact","n.start":"Get Started",
+    "h.badge":"🚀 Professional Social Media Design",
+    "h.h1a":"Transform your ideas into","h.h1b":"stunning designs","h.h1c":"in seconds",
+    "h.sub":"We craft eye-catching posts that amplify your brand, boost engagement, and turn followers into loyal customers.",
+    "h.c1":"View Packages","h.c2":"Learn More",
+    "s.cli":"Happy Clients","s.pos":"Posts Created","s.sat":"Satisfaction","s.sup":"Support",
+    "f.t":"Why Choose","f.s":"Everything you need to dominate social media",
+    "r.t":"What Clients Say","r.s":"Honest words from real clients",
+    "p.t":"Simple","p.t2":"Pricing","p.s":"Choose the plan that fits — scale anytime",
+    "c.t":"Get In Touch","c.s":"Reach us on your preferred platform",
+    "c.wa_lbl":"Chat with us","c.wa_btn":"Chat Now",
+    "c.tg_lbl":"Message us","c.tg_btn":"Message Us",
+    "c.fb_lbl":"Follow our page","c.fb_btn":"Follow Us",
+    "ct.h":"Ready to ","ct.h2":"level up","ct.h3":" your brand?",
+    "ct.s":"No contracts, cancel anytime.","ct.b":"Start Today →","ft.r":"All rights reserved",
+    "m.t":"Create Your Account","m.s":"Subscribe to","m.next":"Next →","m.back":"← Back",
+    "m.priv":"Your data is secure.","m.done":"Done ✓",
+    "fm.fn":"First Name","fm.ln":"Last Name","fm.em":"Email","fm.ph":"Phone Number",
+    "fm.ci":"City","fm.co":"Country","fm.biz":"Business Name","fm.opt":"(optional)",
+    "e.fn":"First name required","e.ln":"Last name required",
+    "e.em":"Valid email required","e.ph":"Valid phone number required","e.ci":"City required","e.co":"Country required",
+    "ph.hint":"Select your country first",
+    "otp.t":"Verify Your Phone","otp.desc":"We sent a 6-digit code to","otp.verify":"Verify Code",
+    "otp.resend":"Resend Code","otp.err":"Invalid code. Try again.","otp.ok":"✓ Verified!",
+    "otp.wait":"Resend in","otp.sec":"s",
+    "pay.t":"Choose Payment","pay.sub":"Select how you'd like to pay",
+    "pay.bank":"Bank Transfer","pay.cnum":"Card Number","pay.cname":"Cardholder Name","pay.cname_ph":"JOHN DOE",
+    "pay.exp":"Expiry","pay.cvc":"CVV","pay.confirm":"Confirm Payment →",
+    "pay.secure":"Payments are encrypted and secure",
+    "pay.instapay":"Send payment via InstaPay to:\nInstaPay ID: @DLSYSTEMS\nAmount: {amount} EGP\nThen send screenshot to our WhatsApp.",
+    "pay.vodafone":"Send payment via Vodafone Cash to:\nNumber: 01X XXXX XXXX\nAmount: {amount} EGP\nThen send confirmation to our WhatsApp.",
+    "pay.bank_info":"Bank Transfer Details:\nBank: CIB / NBE\nAccount: XXXX XXXX XXXX\nAmount: {amount} EGP\nReference: Your name",
+    "e.cnum":"Valid card number required","e.cname":"Cardholder name required",
+    "e.exp":"Valid expiry required","e.cvc":"CVV required","e.nopm":"Please select a payment method",
+    "sm.plan":"Plan","sm.posts":"Posts/month","sm.price":"Price","sm.feat":"Bonus",
+    "pu":"posts/mo","pm":"EGP/mo",
+    "pn.b":"Basic","pn.m":"Standard","pn.a":"Advanced","pn.v":"Professional",
+    "pf.b":"1 Free Revision","pf.m":"Fast Delivery","pf.a":"24/7 Support","pf.v":"Dedicated Manager",
+    "pb":"Subscribe Now","pp":"Most Popular","pv":"VIP",
+    "pfeat.b":["1 professional post/month","1 free revision","All platform sizes","High-res files"],
+    "pfeat.m":["3 professional posts/month","Fast 2-day delivery","2 free revisions","All platform sizes","Email support"],
+    "pfeat.a":["8 professional posts/month","Unlimited revisions","24/7 support","Content strategy","Priority delivery"],
+    "pfeat.v":["20 professional posts/month","Dedicated account manager","Priority on everything","Performance reports","Unlimited revisions"],
+    "sv.a":"Best Value! 🔥","sv.v":"Most Posts! 🏆",
+    "suc.t":"Welcome aboard! 🎉","suc.m":"Your subscription is confirmed. Our team will contact you within 24 hours.",
+    "sl.n":"Name","sl.e":"Email","sl.ph":"Phone","sl.p":"Plan","sl.pay":"Payment"
+  },
+  ar:{
+    "n.feat":"المميزات","n.rev":"التقييمات","n.price":"الأسعار","n.contact":"تواصل معنا","n.start":"ابدأ الآن",
+    "h.badge":"🚀 خدمة تصميم السوشيال ميديا الاحترافية",
+    "h.h1a":"حوّل أفكارك إلى","h.h1b":"تصاميم احترافية","h.h1c":"في ثوانٍ",
+    "h.sub":"نصنع لك بوستات جذابة تزيد تفاعل جمهورك وتعزز حضورك الرقمي وتحوّل المتابعين إلى عملاء حقيقيين.",
+    "h.c1":"استعرض الباقات","h.c2":"تعرّف أكثر",
+    "s.cli":"عميل سعيد","s.pos":"بوست منجز","s.sat":"رضا العملاء","s.sup":"دعم فني",
+    "f.t":"لماذا تختار","f.s":"كل ما تحتاجه للتميز على السوشيال ميديا",
+    "r.t":"ماذا يقول عملاؤنا","r.s":"كلام صادق من عملاء حقيقيين",
+    "p.t":"باقات","p.t2":"الأسعار","p.s":"اختر الباقة المناسبة — يمكنك الترقية في أي وقت",
+    "c.t":"تواصل معنا","c.s":"تواصل معنا عبر منصتك المفضلة",
+    "c.wa_lbl":"تواصل معنا","c.wa_btn":"تواصل الآن",
+    "c.tg_lbl":"راسلنا","c.tg_btn":"راسلنا",
+    "c.fb_lbl":"تابع صفحتنا","c.fb_btn":"تابعنا",
+    "ct.h":"هل أنت مستعد لـ","ct.h2":"تطوير علامتك","ct.h3":" التجارية؟",
+    "ct.s":"بدون عقود، يمكن الإلغاء في أي وقت.","ct.b":"ابدأ اليوم ←","ft.r":"جميع الحقوق محفوظة",
+    "m.t":"إنشاء حسابك","m.s":"اشترك في","m.next":"التالي ←","m.back":"→ رجوع",
+    "m.priv":"بياناتك آمنة.","m.done":"تم ✓",
+    "fm.fn":"الاسم الأول","fm.ln":"اسم العائلة","fm.em":"البريد الإلكتروني","fm.ph":"رقم الهاتف",
+    "fm.ci":"المدينة","fm.co":"الدولة","fm.biz":"اسم النشاط التجاري","fm.opt":"(اختياري)",
+    "e.fn":"الاسم الأول مطلوب","e.ln":"اسم العائلة مطلوب",
+    "e.em":"بريد إلكتروني صحيح مطلوب","e.ph":"رقم هاتف صحيح مطلوب","e.ci":"المدينة مطلوبة","e.co":"الدولة مطلوبة",
+    "ph.hint":"اختر دولتك أولاً",
+    "otp.t":"تحقق من رقمك","otp.desc":"أرسلنا كود مكون من 6 أرقام إلى","otp.verify":"تحقق من الكود",
+    "otp.resend":"إعادة إرسال الكود","otp.err":"كود خاطئ. حاول مجدداً.","otp.ok":"✓ تم التحقق!",
+    "otp.wait":"إعادة الإرسال خلال","otp.sec":"ث",
+    "pay.t":"اختر وسيلة الدفع","pay.sub":"اختر الطريقة المناسبة لك",
+    "pay.bank":"تحويل بنكي","pay.cnum":"رقم البطاقة","pay.cname":"اسم حامل البطاقة","pay.cname_ph":"الاسم كما هو مكتوب على البطاقة",
+    "pay.exp":"تاريخ الانتهاء","pay.cvc":"رمز CVV","pay.confirm":"تأكيد الدفع ←",
+    "pay.secure":"المدفوعات مشفرة وآمنة تماماً",
+    "pay.instapay":"أرسل الدفع عبر إنستاباي إلى:\nمعرف إنستاباي: @DLSYSTEMS\nالمبلغ: {amount} ج.م\nثم أرسل لقطة الشاشة على واتساب.",
+    "pay.vodafone":"أرسل الدفع عبر فودافون كاش إلى:\nالرقم: 01X XXXX XXXX\nالمبلغ: {amount} ج.م\nثم أرسل رقم التأكيد على واتساب.",
+    "pay.bank_info":"تفاصيل التحويل البنكي:\nالبنك: CIB / الأهلي\nرقم الحساب: XXXX XXXX XXXX\nالمبلغ: {amount} ج.م\nالمرجع: اسمك",
+    "e.cnum":"رقم البطاقة مطلوب","e.cname":"اسم حامل البطاقة مطلوب",
+    "e.exp":"تاريخ انتهاء صالح مطلوب","e.cvc":"رمز CVV مطلوب","e.nopm":"يرجى اختيار وسيلة دفع",
+    "sm.plan":"الباقة","sm.posts":"بوستات/شهر","sm.price":"السعر","sm.feat":"ميزة إضافية",
+    "pu":"بوست/شهر","pm":"ج.م/شهر",
+    "pn.b":"الأساسية","pn.m":"المتوسطة","pn.a":"المتقدمة","pn.v":"الاحترافية",
+    "pf.b":"تعديل واحد مجاني","pf.m":"تسليم سريع","pf.a":"دعم فني 24/7","pf.v":"مدير حساب خاص",
+    "pb":"اشترك الآن","pp":"الأكثر طلباً","pv":"VIP",
+    "pfeat.b":["1 بوستات احترافية شهرياً","تعديل مجاني لكل بوست","أبعاد لكل المنصات","ملفات عالية الجودة"],
+    "pfeat.m":["3 بوستات احترافية شهرياً","تسليم سريع خلال يومين","تعديلان مجانيان","أبعاد لكل المنصات","دعم عبر الإيميل"],
+    "pfeat.a":["8 بوست احترافي شهرياً","تعديلات غير محدودة","دعم فني 24/7","استراتيجية محتوى","أولوية التسليم"],
+    "pfeat.v":["20 بوست احترافي شهرياً","مدير حساب خاص مخصص","أولوية في كل شيء","تقارير أداء","تعديلات غير محدودة"],
+    "sv.a":"الأفضل قيمة! 🔥","sv.v":"أكبر توفير! 🏆",
+    "suc.t":"أهلاً بك في ديزاين برو! 🎉","suc.m":"تم تأكيد اشتراكك. سيتواصل معك فريقنا خلال 24 ساعة.",
+    "sl.n":"الاسم","sl.e":"البريد","sl.ph":"الهاتف","sl.p":"الباقة","sl.pay":"وسيلة الدفع"
+  },
+  es:{
+    "n.feat":"Funciones","n.rev":"Reseñas","n.price":"Precios","n.contact":"Contacto","n.start":"Empezar",
+    "h.badge":"🚀 Diseño Profesional para Redes Sociales",
+    "h.h1a":"Transforma tus ideas en","h.h1b":"diseños increíbles","h.h1c":"en segundos",
+    "h.sub":"Creamos publicaciones atractivas que amplifican tu marca y convierten seguidores en clientes.",
+    "h.c1":"Ver Paquetes","h.c2":"Saber Más",
+    "s.cli":"Clientes Felices","s.pos":"Posts Creados","s.sat":"Satisfacción","s.sup":"Soporte",
+    "f.t":"¿Por Qué Elegirnos?","f.s":"Todo lo que necesitas para dominar las redes",
+    "r.t":"Opiniones de Clientes","r.s":"Palabras honestas de clientes reales",
+    "p.t":"Precios","p.t2":"Simples","p.s":"Elige el plan — escala cuando quieras",
+    "c.t":"Contáctanos","c.s":"Contáctanos en tu plataforma favorita",
+    "c.wa_lbl":"Chatea con nosotros","c.wa_btn":"Chatear",
+    "c.tg_lbl":"Escríbenos","c.tg_btn":"Escribir",
+    "c.fb_lbl":"Síguenos","c.fb_btn":"Seguir",
+    "ct.h":"¿Listo para ","ct.h2":"impulsar tu marca","ct.h3":"?",
+    "ct.s":"Sin contratos, cancela cuando quieras.","ct.b":"Empezar Hoy →","ft.r":"Todos los derechos reservados",
+    "m.t":"Crea Tu Cuenta","m.s":"Suscribirse a","m.next":"Siguiente →","m.back":"← Volver",
+    "m.done":"Listo ✓","fm.fn":"Nombre","fm.ln":"Apellido","fm.em":"Correo","fm.ph":"Teléfono",
+    "fm.co":"País","fm.biz":"Nombre del Negocio","fm.opt":"(opcional)",
+    "e.fn":"Nombre requerido","e.ln":"Apellido requerido","e.em":"Correo válido","e.ph":"Teléfono válido",
+    "e.co":"País requerido","ph.hint":"Selecciona tu país primero",
+    "otp.t":"Verifica tu Teléfono","otp.desc":"Enviamos un código de 6 dígitos a","otp.verify":"Verificar",
+    "otp.resend":"Reenviar","otp.err":"Código inválido.","otp.ok":"✓ Verificado!",
+    "otp.wait":"Reenviar en","otp.sec":"s",
+    "pay.t":"Elige el Pago","pay.sub":"Selecciona cómo pagar",
+    "pay.bank":"Transferencia","pay.cnum":"Número de Tarjeta","pay.cname":"Nombre en la Tarjeta","pay.cname_ph":"NOMBRE APELLIDO",
+    "pay.exp":"Vencimiento","pay.cvc":"CVV","pay.confirm":"Confirmar Pago →",
+    "pay.secure":"Los pagos están encriptados y son seguros",
+    "pay.instapay":"Envía el pago por InstaPay a:\nID: @DLSYSTEMS\nMonto: {amount} EGP",
+    "pay.vodafone":"Envía por Vodafone Cash a:\nNúmero: 01X XXXX XXXX\nMonto: {amount} EGP",
+    "pay.bank_info":"Transferencia bancaria:\nBanco: CIB\nCuenta: XXXX XXXX\nMonto: {amount} EGP",
+    "e.cnum":"Número de tarjeta requerido","e.cname":"Nombre requerido","e.exp":"Vencimiento requerido","e.cvc":"CVV requerido","e.nopm":"Selecciona un método de pago",
+    "sm.plan":"Plan","sm.posts":"Posts/mes","sm.price":"Precio","sm.feat":"Bono",
+    "pu":"posts/mes","pm":"EGP/mes",
+    "pn.b":"Básico","pn.m":"Estándar","pn.a":"Avanzado","pn.v":"Profesional",
+    "pf.b":"1 Revisión Gratis","pf.m":"Entrega Rápida","pf.a":"Soporte 24/7","pf.v":"Manager Dedicado",
+    "pb":"Suscribirse","pp":"Más Popular","pv":"VIP",
+    "pfeat.b":["1 posts/mes","1 revisión gratis","Todos los tamaños","Alta resolución"],
+    "pfeat.m":["3 posts/mes","Entrega en 2 días","2 revisiones","Todos los tamaños","Soporte email"],
+    "pfeat.a":["8 posts/mes","Revisiones ilimitadas","Soporte 24/7","Estrategia","Prioridad"],
+    "pfeat.v":["20 posts/mes","Manager dedicado","Prioridad total","Informes","Revisiones ilimitadas"],
+    "sv.a":"¡Mejor Valor! 🔥","sv.v":"¡Más Posts! 🏆",
+    "suc.t":"¡Bienvenido! 🎉","suc.m":"Tu suscripción está confirmada. Te contactaremos en 24h.",
+    "sl.n":"Nombre","sl.e":"Correo","sl.ph":"Teléfono","sl.p":"Plan","sl.pay":"Pago"
+  },
+  ru:{
+    "n.feat":"Функции","n.rev":"Отзывы","n.price":"Цены","n.contact":"Контакты","n.start":"Начать",
+    "h.badge":"🚀 Профессиональный дизайн для соцсетей",
+    "h.h1a":"Превращаем идеи в","h.h1b":"яркий дизайн","h.h1c":"за секунды",
+    "h.sub":"Создаём привлекательные посты, которые усиливают бренд и превращают подписчиков в клиентов.",
+    "h.c1":"Смотреть пакеты","h.c2":"Узнать больше",
+    "s.cli":"Клиентов","s.pos":"Постов","s.sat":"Довольны","s.sup":"Поддержка",
+    "f.t":"Почему мы?","f.s":"Всё для доминирования в соцсетях",
+    "r.t":"Отзывы","r.s":"Честные слова клиентов",
+    "p.t":"Простые","p.t2":"Цены","p.s":"Выберите план",
+    "c.t":"Контакты","c.s":"Напишите нам",
+    "c.wa_lbl":"Написать","c.wa_btn":"Написать",
+    "c.tg_lbl":"Telegram","c.tg_btn":"Написать",
+    "c.fb_lbl":"Страница","c.fb_btn":"Подписаться",
+    "ct.h":"Готовы ","ct.h2":"развить бренд","ct.h3":"?",
+    "ct.s":"Без контрактов.","ct.b":"Начать →","ft.r":"Все права защищены",
+    "m.t":"Создать аккаунт","m.s":"Подписаться на","m.next":"Далее →","m.back":"← Назад",
+    "m.done":"Готово ✓","fm.fn":"Имя","fm.ln":"Фамилия","fm.em":"Email","fm.ph":"Телефон",
+    "fm.co":"Страна","fm.biz":"Название бизнеса","fm.opt":"(необязательно)",
+    "e.fn":"Имя обязательно","e.ln":"Фамилия обязательна","e.em":"Email обязателен","e.ph":"Телефон обязателен",
+    "e.co":"Страна обязательна","ph.hint":"Сначала выберите страну",
+    "otp.t":"Подтверждение телефона","otp.desc":"Мы отправили 6-значный код на","otp.verify":"Подтвердить",
+    "otp.resend":"Отправить снова","otp.err":"Неверный код.","otp.ok":"✓ Подтверждено!",
+    "otp.wait":"Повтор через","otp.sec":"с",
+    "pay.t":"Выберите оплату","pay.sub":"Выберите способ оплаты",
+    "pay.bank":"Банк. перевод","pay.cnum":"Номер карты","pay.cname":"Имя держателя","pay.cname_ph":"ИМЯ ФАМИЛИЯ",
+    "pay.exp":"Срок","pay.cvc":"CVV","pay.confirm":"Подтвердить оплату →",
+    "pay.secure":"Платежи зашифрованы и безопасны",
+    "pay.instapay":"Оплата через InstaPay:\nID: @DLSYSTEMS\nСумма: {amount} EGP",
+    "pay.vodafone":"Оплата через Vodafone Cash:\nНомер: 01X XXXX XXXX\nСумма: {amount} EGP",
+    "pay.bank_info":"Банковский перевод:\nБанк: CIB\nСчёт: XXXX XXXX\nСумма: {amount} EGP",
+    "e.cnum":"Номер карты обязателен","e.cname":"Имя обязательно","e.exp":"Срок обязателен","e.cvc":"CVV обязателен","e.nopm":"Выберите способ оплаты",
+    "sm.plan":"План","sm.posts":"Постов/мес","sm.price":"Цена","sm.feat":"Бонус",
+    "pu":"постов/мес","pm":"EGP/мес",
+    "pn.b":"Базовый","pn.m":"Стандартный","pn.a":"Продвинутый","pn.v":"Профессиональный",
+    "pf.b":"1 правка","pf.m":"Быстро","pf.a":"24/7","pf.v":"Менеджер",
+    "pb":"Подписаться","pp":"Популярный","pv":"VIP",
+    "pfeat.b":["5 постов/мес","1 правка","Все форматы","Качество"],
+    "pfeat.m":["10 постов/мес","Быстро","2 правки","Все форматы","Email"],
+    "pfeat.a":["20 постов/мес","Без лимита правок","24/7","Стратегия","Приоритет"],
+    "pfeat.v":["50 постов/мес","Личный менеджер","Приоритет","Аналитика","Без лимита"],
+    "sv.a":"Лучшая цена! 🔥","sv.v":"Больше постов! 🏆",
+    "suc.t":"Добро пожаловать! 🎉","suc.m":"Подписка подтверждена. Свяжемся в течение 24 часов.",
+    "sl.n":"Имя","sl.e":"Email","sl.ph":"Телефон","sl.p":"План","sl.pay":"Оплата"
+  },
+  it:{
+    "n.feat":"Funzionalità","n.rev":"Recensioni","n.price":"Prezzi","n.contact":"Contatti","n.start":"Inizia",
+    "h.badge":"🚀 Design Professionale per Social Media",
+    "h.h1a":"Trasforma le tue idee in","h.h1b":"design straordinari","h.h1c":"in pochi secondi",
+    "h.sub":"Creiamo post accattivanti che amplificano il tuo brand e trasformano follower in clienti.",
+    "h.c1":"Vedi Pacchetti","h.c2":"Scopri di più",
+    "s.cli":"Clienti","s.pos":"Post Creati","s.sat":"Soddisfazione","s.sup":"Supporto",
+    "f.t":"Perché Sceglierci?","f.s":"Tutto per dominare i social",
+    "r.t":"Opinioni dei Clienti","r.s":"Parole oneste da clienti reali",
+    "p.t":"Prezzi","p.t2":"Semplici","p.s":"Scegli il piano",
+    "c.t":"Contattaci","c.s":"Contattaci sulla piattaforma preferita",
+    "c.wa_lbl":"Chatta","c.wa_btn":"Chatta",
+    "c.tg_lbl":"Scrivici","c.tg_btn":"Scrivi",
+    "c.fb_lbl":"Seguici","c.fb_btn":"Segui",
+    "ct.h":"Pronto a ","ct.h2":"crescere","ct.h3":"?",
+    "ct.s":"Nessun contratto.","ct.b":"Inizia Oggi →","ft.r":"Tutti i diritti riservati",
+    "m.t":"Crea Account","m.s":"Iscriviti a","m.next":"Avanti →","m.back":"← Indietro",
+    "m.done":"Fatto ✓","fm.fn":"Nome","fm.ln":"Cognome","fm.em":"Email","fm.ph":"Telefono",
+    "fm.co":"Paese","fm.biz":"Nome Azienda","fm.opt":"(facoltativo)",
+    "e.fn":"Nome obbligatorio","e.ln":"Cognome obbligatorio","e.em":"Email valida","e.ph":"Telefono valido",
+    "e.co":"Paese obbligatorio","ph.hint":"Seleziona prima il paese",
+    "otp.t":"Verifica Telefono","otp.desc":"Abbiamo inviato un codice a","otp.verify":"Verifica",
+    "otp.resend":"Reinvia","otp.err":"Codice non valido.","otp.ok":"✓ Verificato!",
+    "otp.wait":"Rinvia tra","otp.sec":"s",
+    "pay.t":"Scegli Pagamento","pay.sub":"Seleziona come pagare",
+    "pay.bank":"Bonifico","pay.cnum":"Numero Carta","pay.cname":"Intestatario","pay.cname_ph":"NOME COGNOME",
+    "pay.exp":"Scadenza","pay.cvc":"CVV","pay.confirm":"Conferma Pagamento →",
+    "pay.secure":"I pagamenti sono criptati e sicuri",
+    "pay.instapay":"Paga tramite InstaPay:\nID: @DLSYSTEMS\nImporto: {amount} EGP",
+    "pay.vodafone":"Paga tramite Vodafone Cash:\nNumero: 01X XXXX XXXX\nImporto: {amount} EGP",
+    "pay.bank_info":"Bonifico bancario:\nBanca: CIB\nConto: XXXX XXXX\nImporto: {amount} EGP",
+    "e.cnum":"Numero carta richiesto","e.cname":"Nome richiesto","e.exp":"Scadenza richiesta","e.cvc":"CVV richiesto","e.nopm":"Seleziona un metodo di pagamento",
+    "sm.plan":"Piano","sm.posts":"Post/mese","sm.price":"Prezzo","sm.feat":"Bonus",
+    "pu":"post/mese","pm":"EGP/mese",
+    "pn.b":"Base","pn.m":"Standard","pn.a":"Avanzato","pn.v":"Professionale",
+    "pf.b":"1 revisione","pf.m":"Veloce","pf.a":"24/7","pf.v":"Manager",
+    "pb":"Iscriviti","pp":"Più Popolare","pv":"VIP",
+    "pfeat.b":["5 post/mese","1 revisione","Tutti i formati","Alta qualità"],
+    "pfeat.m":["10 post/mese","2 giorni","2 revisioni","Tutti i formati","Email"],
+    "pfeat.a":["20 post/mese","Illimitate","24/7","Strategia","Priorità"],
+    "pfeat.v":["50 post/mese","Manager","Priorità","Report","Illimitate"],
+    "sv.a":"Miglior Valore! 🔥","sv.v":"Più Post! 🏆",
+    "suc.t":"Benvenuto! 🎉","suc.m":"Abbonamento confermato. Ti contatteremo entro 24 ore.",
+    "sl.n":"Nome","sl.e":"Email","sl.ph":"Telefono","sl.p":"Piano","sl.pay":"Pagamento"
+  }
+};
+
+let lang='en', theme='dark', selPlan=null, curStep=1;
+let otpCode='', otpTimer=null, otpSecsLeft=60;
+let selPM='';
+const g=k=>T[lang]?.[k]??T.en?.[k]??k;
+
+/* ══ PHONE COUNTRY DATA ══ */
+const COUNTRIES={
+  EG:{dial:'+20',flag:'🇪🇬',len:10,fmt:'1XX XXX XXXX'},
+  SA:{dial:'+966',flag:'🇸🇦',len:9,fmt:'5X XXX XXXX'},
+  AE:{dial:'+971',flag:'🇦🇪',len:9,fmt:'5X XXX XXXX'},
+  KW:{dial:'+965',flag:'🇰🇼',len:8,fmt:'XXXX XXXX'},
+  QA:{dial:'+974',flag:'🇶🇦',len:8,fmt:'XXXX XXXX'},
+  BH:{dial:'+973',flag:'🇧🇭',len:8,fmt:'XXXX XXXX'},
+  OM:{dial:'+968',flag:'🇴🇲',len:8,fmt:'XXXX XXXX'},
+  JO:{dial:'+962',flag:'🇯🇴',len:9,fmt:'7X XXX XXXX'},
+  LB:{dial:'+961',flag:'🇱🇧',len:8,fmt:'XXXX XXXX'},
+  MA:{dial:'+212',flag:'🇲🇦',len:9,fmt:'6XX XXX XXX'},
+  ES:{dial:'+34',flag:'🇪🇸',len:9,fmt:'XXX XXX XXX'},
+  IT:{dial:'+39',flag:'🇮🇹',len:10,fmt:'XXX XXX XXXX'},
+  RU:{dial:'+7',flag:'🇷🇺',len:10,fmt:'XXX XXX XX XX'},
+  OTHER:{dial:'+?',flag:'🌍',len:7,fmt:''}
+};
+
+/* ══ INIT ══ */
+function init(){
+  buildParticles();buildMarquee();buildFeatures();buildTestimonials();buildPricing();
+  applyTranslations();observeAll();
+}
+
+/* ══ PARTICLES ══ */
+function buildParticles(){
+  const c=document.getElementById('particles');c.innerHTML='';
+  for(let i=0;i<40;i++){
+    const p=document.createElement('div');p.className='particle';
+    const s=1+Math.random()*2.5;
+    p.style.cssText=`left:${Math.random()*100}%;width:${s}px;height:${s}px;background:${Math.random()>.5?'#00d4ff':'#7b2fff'};--dur:${7+Math.random()*12}s;--delay:${Math.random()*11}s`;
+    c.appendChild(p);
+  }
+}
+
+/* ══ MARQUEE ══ */
+const MQ={
+  en:['Instagram Posts','Facebook Covers','Story Designs','Carousel Posts','Reels Thumbnails','LinkedIn Posts','Twitter/X Graphics','YouTube Thumbnails','Brand Identity','Logo Design'],
+  ar:['بوستات إنستقرام','أغلفة فيسبوك','تصاميم ستوري','كاروسيل','صور ريلز','بوستات لينكدإن','جرافيك تويتر','يوتيوب','هوية بصرية','تصميم شعار'],
+  es:['Posts Instagram','Portadas Facebook','Stories','Carrusel','Reels','LinkedIn','Twitter','YouTube','Identidad','Logo'],
+  ru:['Instagram','Facebook','Stories','Карусели','Reels','LinkedIn','Twitter','YouTube','Стиль','Логотип'],
+  it:['Post Instagram','Copertine','Stories','Carosello','Reels','LinkedIn','Twitter','YouTube','Brand','Logo']
+};
+function buildMarquee(){
+  const items=MQ[lang]||MQ.en,d=[...items,...items];
+  document.getElementById('mqTrack').innerHTML=d.map(x=>`<div class="mq-item"><span>✦</span>${x}</div>`).join('');
+}
+
+/* ══ FEATURES ══ */
+const FD=[
+  {i:'🎨',en:['Unique Designs','Every post is crafted exclusively for your brand with a creative style that grabs attention.'],ar:['تصاميم فريدة','كل بوست مصمم خصيصاً لعلامتك بأسلوب إبداعي يجذب الانتباه.'],es:['Diseños Únicos','Cada post se crea exclusivamente para tu marca.'],ru:['Уникальный дизайн','Каждый пост создаётся эксклюзивно для вашего бренда.'],it:['Design Unici','Ogni post è creato esclusivamente per il tuo brand.']},
+  {i:'⚡',en:['Lightning Fast','Delivered on schedule, every time — no delays.'],ar:['تسليم سريع','نلتزم بالمواعيد بدقة تامة.'],es:['Entrega Rápida','Entregado a tiempo, siempre.'],ru:['Быстрая доставка','В срок, без задержек.'],it:['Consegna Rapida','Puntuale, sempre.']},
+  {i:'🔄',en:['Unlimited Revisions','We revise until you love the result. Satisfaction guaranteed.'],ar:['تعديلات مجانية','نعدّل حتى تكون راضياً 100%. الرضا مضمون.'],es:['Revisiones Ilimitadas','Revisamos hasta que ames el resultado.'],ru:['Неограниченные правки','Правим до полного удовлетворения.'],it:['Revisioni Illimitate','Rivediamo finché non sei soddisfatto.']},
+  {i:'📱',en:['All Platforms','Perfect for Instagram, Facebook, TikTok, LinkedIn and more.'],ar:['كل المنصات','أبعاد مثالية لكل المنصات.'],es:['Todas las Plataformas','Perfecto para todas las redes.'],ru:['Все платформы','Для всех социальных сетей.'],it:['Tutte le Piattaforme','Perfetto per tutti i social.']},
+  {i:'📊',en:['Content Strategy','We advise on strategy to grow your audience, not just design.'],ar:['استراتيجية محتوى','لا نكتفي بالتصميم — نستشيرك في استراتيجيتك.'],es:['Estrategia de Contenido','No solo diseñamos — te asesoramos.'],ru:['Контент-стратегия','Советуем по стратегии.'],it:['Strategia Contenuti','Non solo design — consulenza.']},
+  {i:'🔒',en:['100% Your Rights','Full commercial rights on every delivery.'],ar:['حقوق حصرية 100%','حقوق تجارية كاملة مع كل تسليم.'],es:['100% Tus Derechos','Derechos comerciales completos.'],ru:['Ваши права 100%','Полные коммерческие права.'],it:['100% Tuoi Diritti','Diritti commerciali completi.']},
+  {i:'🤝',en:['Dedicated Manager','Premium clients get a personal manager who knows their brand.'],ar:['مدير حساب خاص','العملاء المميزون يحصلون على مدير شخصي.'],es:['Manager Dedicado','Los clientes premium tienen un manager personal.'],ru:['Персональный менеджер','Для премиум-клиентов.'],it:['Manager Dedicato','Per i clienti premium.']},
+  {i:'🌍',en:['5 Languages Supported','Arabic, English, Spanish, Russian, Italian.'],ar:['دعم 5 لغات','عربي وإنجليزي وإسباني وروسي وإيطالي.'],es:['5 Idiomas','Árabe, inglés, español, ruso, italiano.'],ru:['5 языков','Арабский, английский, испанский, русский, итальянский.'],it:['5 Lingue','Arabo, inglese, spagnolo, russo, italiano.']},
+  {i:'🏆',en:['Premium Quality','Standards benchmarked against global top brands.'],ar:['جودة عالمية','معاييرنا تنافس أفضل العلامات العالمية.'],es:['Calidad Premium','Estándares de las mejores marcas.'],ru:['Высокое качество','Стандарты мировых брендов.'],it:['Qualità Premium','Standard dei migliori brand.']}
+];
+function buildFeatures(){
+  document.getElementById('featGrid').innerHTML=FD.map(f=>`
+    <div class="fc"><div class="fi">${f.i}</div>
+    <h3>${(f[lang]||f.en)[0]}</h3><p>${(f[lang]||f.en)[1]}</p></div>`).join('');
+}
+
+/* ══ TESTIMONIALS — mix of 3/4/5 stars ══ */
+const TD=[
+  {s:5,av:'👩‍💼',col:'#00d4ff18',
+   en:['"My Instagram engagement tripled in two months. Consistently high quality work."','Layla R.','Brand Consultant'],
+   ar:['"تفاعل انستقرامي تضاعف ثلاث مرات في شهرين. جودة عالية في كل مرة."','ليلى رشاد','مستشارة علامات تجارية'],
+   es:['"Mi engagement se triplicó en dos meses. Calidad siempre alta."','Laura R.','Consultora'],
+   ru:['"Вовлечённость утроилась за два месяца."','Лейла Р.','Бренд-консультант'],
+   it:['"Il mio engagement è triplicato in due mesi."','Laura R.','Consulente']},
+  {s:4,av:'👨‍💻',col:'#7b2fff18',
+   en:['"Good team, fast delivery. Occasionally needed extra revision but final results are always solid."','Ahmed M.','E-commerce Owner'],
+   ar:['"فريق جيد وسريع. أحياناً محتاج تعديل إضافي، بس النتائج دايماً ممتازة."','أحمد محمد','صاحب متجر إلكتروني'],
+   es:['"Buen equipo. A veces necesité revisiones extra pero siempre sólido."','Carlos M.','E-commerce'],
+   ru:['"Хорошая команда. Иногда нужны доп. правки, но итог качественный."','Ахмед М.','Магазин'],
+   it:['"Buon team. A volte revisioni extra, ma sempre solido."','Carlo M.','E-commerce']},
+  {s:5,av:'🧕',col:'#ffb80018',
+   en:['"Our restaurant page looks premium now. Customers mention our posts before visiting!"','Fatima A.','Restaurant Owner'],
+   ar:['"صفحة المطعم بقت تبدو احترافية جداً. الزبائن بيتكلموا عن بوستاتنا قبل ما يجوا!"','فاطمة علي','صاحبة مطعم'],
+   es:['"Nuestra página del restaurante parece premium. ¡Los clientes mencionan nuestros posts!"','Fátima A.','Restaurante'],
+   ru:['"Страница ресторана выглядит премиум. Клиенты упоминают посты!"','Фатима А.','Ресторан'],
+   it:['"La nostra pagina sembra premium. I clienti menzionano i post!"','Fatima A.','Ristorante']},
+  {s:3,av:'🧑‍💼',col:'#ff9f4318',
+   en:['"Good designs overall, though communication could be faster. The output quality is there."','Kareem S.','Startup Founder'],
+   ar:['"تصاميم جيدة بشكل عام، لكن التواصل ممكن يكون أسرع. جودة الشغل كويسة."','كريم سامر','مؤسس شركة ناشئة'],
+   es:['"Buenos diseños, aunque la comunicación podría ser más rápida."','Carlos S.','Emprendedor'],
+   ru:['"Хорошие дизайны, хотя общение могло бы быть быстрее."','Карим С.','Стартап'],
+   it:['"Buoni design, ma la comunicazione potrebbe essere più rapida."','Carlo S.','Startup']},
+  {s:5,av:'👨‍🎤',col:'#2ed57318',
+   en:['"The VIP plan is exactly right for my music brand. Having someone who understands my aesthetic is rare."','Omar S.','Music Producer'],
+   ar:['"باقة VIP مناسبة تماماً لبراند الموسيقى. إن حد يفهم أسلوبي ده نادر وثمين."','عمر سامي','منتج موسيقي'],
+   es:['"El plan VIP es perfecto para mi marca musical."','Omar S.','Productor Musical'],
+   ru:['"VIP-план идеален для музыкального бренда."','Омар С.','Продюсер'],
+   it:['"Il piano VIP è perfetto per il mio brand musicale."','Omar S.','Produttore']},
+  {s:4,av:'👩‍🍳',col:'#ff475718',
+   en:['"Great design quality. Onboarding could be faster, but the output makes up for it."','Nour H.','Food Creator'],
+   ar:['"جودة تصميم رائعة. عملية البداية ممكن تكون أسرع، بس الشغل بيعوّض."','نور حسن','صانعة محتوى فود'],
+   es:['"Excelente calidad. El onboarding podría ser más rápido."','Nora H.','Creadora de Contenido'],
+   ru:['"Отличное качество. Онбординг мог бы быть быстрее."','Нур Х.','Блогер'],
+   it:['"Ottima qualità. L\'onboarding potrebbe essere più veloce."','Nora H.','Creator']}
+];
+function buildTestimonials(){
+  document.getElementById('testiGrid').innerHTML=TD.map(t=>{
+    const d=t[lang]||t.en;
+    const stars='<span class="sf">★</span>'.repeat(t.s)+'<span class="se">☆</span>'.repeat(5-t.s);
+    return `<div class="tc">
+      <div class="stars">${stars}</div>
+      <blockquote>${d[0]}</blockquote>
+      <div class="tc-auth">
+        <div class="av" style="background:${t.col}">${t.av}</div>
+        <div><div class="tc-name">${d[1]}</div><div class="tc-role">${d[2]}</div></div>
+      </div></div>`;
+  }).join('');
+}
+
+/* ══ PRICING ══ */
+const plans=[
+  {id:'b',icon:'🌱',posts:1,price:500,pop:false,vip:false},
+  {id:'m',icon:'⚡',posts:3,price:1000,pop:true,vip:false},
+  {id:'a',icon:'🚀',posts:8,price:2200,pop:false,vip:false},
+  {id:'v',icon:'👑',posts:20,price:5000,pop:false,vip:true}
+];
+function buildPricing(){
+  document.getElementById('priceGrid').innerHTML=plans.map((p,i)=>{
+    const nm=g('pn.'+p.id);
+    const feats=(g('pfeat.'+p.id)||[]).map(f=>`<li>${f}</li>`).join('');
+    const badge=p.pop?`<div class="pbadge">${g('pp')}</div>`:p.vip?`<div class="pbadge">${g('pv')}</div>`:'';
+    const save=p.id==='a'?`<div class="psave">${g('sv.a')}</div>`:p.id==='v'?`<div class="psave">${g('sv.v')}</div>`:'';
+    return `<div class="pc ${p.pop?'pop':''} ${p.vip?'vip':''}" onclick="openReg('${p.id}')" style="transition-delay:${i*.08}s">
+      ${badge}<div class="pname">${nm}</div>
+      <div class="pposts">${p.posts} <sub>${g('pu')}</sub></div>
+      <div class="pprice">${p.price.toLocaleString()} <sub>${g('pm')}</sub></div>
+      <div class="pdiv"></div><ul class="pfeats">${feats}</ul>
+      <button class="pbtn">${g('pb')}</button>${save}</div>`;
+  }).join('');
+  observeAll();
+}
+
+/* ══ PHONE ══ */
+function onCountryChange(){
+  const sel=document.getElementById('i-co');
+  const opt=sel.options[sel.selectedIndex];
+  const code=opt.value;
+  const c=COUNTRIES[code]||COUNTRIES.OTHER;
+  const pfx=document.getElementById('phonePfx');
+  pfx.textContent=`${c.flag} ${c.dial}`;
+  pfx.classList.add('active');
+  const ph=document.getElementById('i-ph');
+  ph.placeholder=c.fmt||'Enter number';
+  ph.value='';
+  document.getElementById('phoneHint').textContent=c.fmt?`Format: ${c.fmt}`:'';
+  document.getElementById('phoneHint').className='phone-hint';
+  document.getElementById('fg-ph').classList.remove('err');
+  checkPhone();
+}
+function checkPhone(){
+  const sel=document.getElementById('i-co');
+  const code=sel.options[sel.selectedIndex]?.value;
+  if(!code)return;
+  const c=COUNTRIES[code]||COUNTRIES.OTHER;
+  const val=document.getElementById('i-ph').value.replace(/\s/g,'').replace(/[^0-9]/g,'');
+  const hint=document.getElementById('phoneHint');
+  if(val.length===0){hint.textContent=c.fmt?`Format: ${c.fmt}`:'';hint.className='phone-hint';return;}
+  if(val.length>=c.len){
+    hint.textContent='✓ Looks good';hint.className='phone-hint valid';
+  } else {
+    hint.textContent=`Need ${c.len} digits (${val.length}/${c.len})`;hint.className='phone-hint invalid';
+  }
+}
+function checkEmail(){
+  const v=document.getElementById('i-em').value.trim();
+  const s=document.getElementById('emailStatus');
+  if(!v){s.style.display='none';return;}
+  if(/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)){
+    s.style.display='flex';s.className='email-status ok';s.textContent='✓ Valid email';
+  } else {
+    s.style.display='flex';s.className='email-status bad';s.textContent='✗ Invalid email format';
+  }
+}
+
+/* ══ MODAL OPEN ══ */
+function openReg(planId){
+  selPlan=plans.find(p=>p.id===planId);if(!selPlan)return;
+  selPM='';curStep=1;
+  resetSteps();
+  setStep(1);
+  document.getElementById('mPlanName').textContent=`${selPlan.icon} ${g('pn.'+selPlan.id)}`;
+  buildPlanSummary('mSum');
+  buildPlanSummary('mSum3');
+  const sb=document.getElementById('step1Btn');
+  sb.className='sbtn'+(selPlan.vip?' vs':'');
+  applyTranslations();
+  document.getElementById('regOv').classList.add('open');
+  document.body.style.overflow='hidden';
+  setTimeout(()=>{try{document.getElementById('i-fn').focus()}catch(e){}},350);
+}
+function buildPlanSummary(id){
+  const el=document.getElementById(id);if(!el)return;
+  el.className='ps-sum'+(selPlan.vip?' vip-s':'');
+  el.innerHTML=`
+    <div class="ps-row"><span>${g('sm.plan')}</span><span>${selPlan.icon} ${g('pn.'+selPlan.id)}</span></div>
+    <div class="ps-row"><span>${g('sm.posts')}</span><span>${selPlan.posts}</span></div>
+    <div class="ps-row ps-price"><span>${g('sm.price')}</span><span>${selPlan.price.toLocaleString()} ${g('pm')}</span></div>`;
+}
+function closeReg(){
+  document.getElementById('regOv').classList.remove('open');
+  document.body.style.overflow='';
+  selPlan=null;clearOtpTimer();
+}
+document.getElementById('regOv').addEventListener('click',function(e){if(e.target===this)closeReg()});
+
+/* ══ STEP NAVIGATION ══ */
+function setStep(n){
+  curStep=n;
+  for(let i=1;i<=4;i++){
+    document.getElementById(`step${i}`).className='step-wrap'+(i===n?' active':'');
+    const dot=document.getElementById(`sd${i}`);
+    if(i<n) dot.className='step-dot done'+(selPlan?.vip?' vip-done':'');
+    else if(i===n) dot.className='step-dot active';
+    else dot.className='step-dot';
+    if(i<4){
+      const line=document.getElementById(`sl${i}`);
+      line.className='step-line'+(i<n?' done':'');
+    }
+  }
+}
+function resetSteps(){
+  ['i-fn','i-ln','i-em','i-ph','i-biz'].forEach(id=>{try{document.getElementById(id).value=''}catch(e){}});
+  document.getElementById('i-co').value='';
+  document.getElementById('phonePfx').textContent='🌍 +?';
+  document.getElementById('phonePfx').classList.remove('active');
+  document.getElementById('phoneHint').textContent=g('ph.hint');
+  document.getElementById('phoneHint').className='phone-hint';
+  document.getElementById('emailStatus').style.display='none';
+  document.querySelectorAll('.fg.err').forEach(x=>x.classList.remove('err'));
+  clearAllOtpBoxes();selPM='';
+  document.getElementById('cardSection').classList.remove('show');
+  document.getElementById('altPaySection').classList.remove('show');
+  ['pm-visa','pm-instapay','pm-vodafone','pm-bank'].forEach(id=>{
+    const el=document.getElementById(id);if(el){el.className='pm-card'}
+  });
+}
+function goStepBack(to){setStep(to);if(to===2)startOtpTimer();}
+
+/* ══ STEP 1 VALIDATION ══ */
+function clearErr(id){document.getElementById(id)?.classList.remove('err')}
+function setErr(id){document.getElementById(id)?.classList.add('err')}
+function goStep2(){
+  let ok=true;
+  if(document.getElementById('i-fn').value.trim().length<2){setErr('fg-fn');ok=false;}else clearErr('fg-fn');
+  if(document.getElementById('i-ln').value.trim().length<2){setErr('fg-ln');ok=false;}else clearErr('fg-ln');
+  const em=document.getElementById('i-em').value.trim();
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)){setErr('fg-em');ok=false;}else clearErr('fg-em');
+  const coSel=document.getElementById('i-co');
+  if(!coSel.value){setErr('fg-co');ok=false;}else clearErr('fg-co');
+  const code=coSel.value;const c=COUNTRIES[code]||COUNTRIES.OTHER;
+  const phVal=document.getElementById('i-ph').value.replace(/\s/g,'').replace(/[^0-9]/g,'');
+  if(phVal.length<c.len){setErr('fg-ph');ok=false;}else clearErr('fg-ph');
+  if(!ok)return;
+
+  // Generate fake OTP (in real app send via SMS API)
+  otpCode=String(Math.floor(100000+Math.random()*900000));
+  console.log('OTP (demo):',otpCode); // In production, send via SMS
+  clearAllOtpBoxes();
+  const dial=c.dial, ph=document.getElementById('i-ph').value.trim();
+  document.getElementById('otpPhone').textContent=`${dial} ${ph}`;
+  document.getElementById('otpMsg').textContent='';
+  document.getElementById('otpMsg').style.color='';
+  setStep(2);
+  startOtpTimer();
+  setTimeout(()=>{try{document.getElementById('otp0').focus()}catch(e){}},300);
+}
+
+/* ══ OTP ══ */
+function clearAllOtpBoxes(){
+  for(let i=0;i<6;i++){
+    const b=document.getElementById('otp'+i);
+    if(b){b.value='';b.className='otp-box';}
+  }
+}
+function otpInput(i){
+  const b=document.getElementById('otp'+i);
+  if(!b)return;
+  b.value=b.value.replace(/[^0-9]/g,'');
+  if(b.value){b.className='otp-box filled';if(i<5)document.getElementById('otp'+(i+1)).focus();}
+  else{b.className='otp-box';}
+  if(i===5&&b.value) autoVerify();
+}
+function otpKey(e,i){
+  if(e.key==='Backspace'&&!document.getElementById('otp'+i).value&&i>0){
+    document.getElementById('otp'+(i-1)).focus();
+  }
+}
+function autoVerify(){
+  const entered=[...Array(6)].map((_,i)=>document.getElementById('otp'+i).value).join('');
+  if(entered.length===6) verifyOtp();
+}
+function verifyOtp(){
+  const entered=[...Array(6)].map((_,i)=>document.getElementById('otp'+i).value).join('');
+  const msg=document.getElementById('otpMsg');
+  if(entered===otpCode){
+    msg.textContent=g('otp.ok');msg.style.color='var(--success)';
+    clearOtpTimer();
+    setTimeout(()=>setStep(3),800);
+  } else {
+    msg.textContent=g('otp.err');msg.style.color='var(--danger)';
+    for(let i=0;i<6;i++){const b=document.getElementById('otp'+i);if(b)b.className='otp-box error';}
+    setTimeout(clearAllOtpBoxes,1200);
+  }
+}
+function startOtpTimer(){
+  clearOtpTimer();otpSecsLeft=60;updateTimerUI();
+  otpTimer=setInterval(()=>{
+    otpSecsLeft--;updateTimerUI();
+    if(otpSecsLeft<=0)clearOtpTimer();
+  },1000);
+}
+function updateTimerUI(){
+  const t=document.getElementById('otpTimer');
+  if(otpSecsLeft>0){
+    t.innerHTML=`${g('otp.wait')} <span>${otpSecsLeft}${g('otp.sec')}</span>`;
+  } else {
+    t.innerHTML=`<button class="otp-resend" onclick="resendOtp()">${g('otp.resend')}</button>`;
+  }
+}
+function resendOtp(){
+  otpCode=String(Math.floor(100000+Math.random()*900000));
+  console.log('New OTP (demo):',otpCode);
+  clearAllOtpBoxes();
+  document.getElementById('otpMsg').textContent='';
+  startOtpTimer();
+  setTimeout(()=>{try{document.getElementById('otp0').focus()}catch(e){}},100);
+}
+function clearOtpTimer(){if(otpTimer){clearInterval(otpTimer);otpTimer=null;}}
+
+/* ══ PAYMENT METHOD ══ */
+function selectPM(type){
+  selPM=type;
+  const isVip=selPlan&&selPlan.vip;
+  const cls=isVip?'pm-card selected-vip':'pm-card selected';
+  ['visa','instapay','vodafone','bank'].forEach(t=>{
+    document.getElementById('pm-'+t).className='pm-card';
+    document.getElementById('pmck-'+t).innerHTML='';
+  });
+  document.getElementById('pm-'+type).className=cls;
+  document.getElementById('pmck-'+type).innerHTML='✓';
+
+  document.getElementById('cardSection').classList.remove('show');
+  document.getElementById('altPaySection').classList.remove('show');
+
+  if(type==='visa'){
+    document.getElementById('cardSection').classList.add('show');
+  } else {
+    const amt=selPlan?selPlan.price.toLocaleString():'';
+    const key=type==='instapay'?'pay.instapay':type==='vodafone'?'pay.vodafone':'pay.bank_info';
+    const msg=g(key).replace('{amount}',amt);
+    document.getElementById('altPayMsg').innerHTML=msg.split('\n').map(l=>`<p style="margin-bottom:6px">${l}</p>`).join('');
+    document.getElementById('altPaySection').classList.add('show');
+  }
+}
+
+/* ══ CARD FORMATTING ══ */
+function formatCard(){
+  let v=document.getElementById('i-cnum').value.replace(/\D/g,'');
+  v=v.substring(0,16);
+  v=v.replace(/(.{4})/g,'$1 ').trim();
+  document.getElementById('i-cnum').value=v;
+  const n=v.replace(/\s/g,'');
+  document.getElementById('cb-visa').className='card-brand'+(n.startsWith('4')?' active':'');
+  document.getElementById('cb-mc').className='card-brand'+((n.startsWith('5')||n.startsWith('2'))?' active':'');
+}
+function formatExp(){
+  let v=document.getElementById('i-exp').value.replace(/\D/g,'');
+  if(v.length>2) v=v.substring(0,2)+'/'+v.substring(2,4);
+  document.getElementById('i-exp').value=v;
+}
+
+/* ══ STEP 3 → 4 ══ */
+function goStep4(){
+  if(!selPM){
+    showToast(g('e.nopm'));return;
+  }
+  if(selPM==='visa'){
+    let ok=true;
+    const cn=document.getElementById('i-cnum').value.replace(/\s/g,'');
+    if(cn.length<15){setErr('fg-cnum');ok=false;}else clearErr('fg-cnum');
+    const cname=document.getElementById('i-cname').value.trim();
+    if(cname.length<2){setErr('fg-cname');ok=false;}else clearErr('fg-cname');
+    const exp=document.getElementById('i-exp').value;
+    if(!/^\d{2}\/\d{2}$/.test(exp)){setErr('fg-exp');ok=false;}else{
+      clearErr('fg-exp');
+      // check not expired
+      const [mm,yy]=exp.split('/');
+      const now=new Date();const expDate=new Date(2000+parseInt(yy),parseInt(mm)-1);
+      if(expDate<now){setErr('fg-exp');ok=false;}
+    }
+    const cvc=document.getElementById('i-cvc').value;
+    if(cvc.length<3){setErr('fg-cvc');ok=false;}else clearErr('fg-cvc');
+    if(!ok)return;
+  }
+  // Show success
+  const fn=document.getElementById('i-fn').value.trim();
+  const ln=document.getElementById('i-ln').value.trim();
+  const em=document.getElementById('i-em').value.trim();
+  const coSel=document.getElementById('i-co');
+  const co=coSel.options[coSel.selectedIndex]?.text||'';
+  const c=COUNTRIES[coSel.value]||COUNTRIES.OTHER;
+  const ph=`${c.dial} ${document.getElementById('i-ph').value.trim()}`;
+  const pmLabels={visa:'Visa/Mastercard',instapay:'InstaPay',vodafone:'Vodafone Cash',bank:g('pay.bank')};
+  document.getElementById('sDetail').innerHTML=`
+    <p><strong>${g('sl.n')}:</strong> ${fn} ${ln}</p>
+    <p><strong>${g('sl.e')}:</strong> ${em}</p>
+    <p><strong>${g('sl.ph')}:</strong> ${ph}</p>
+    <p><strong>${g('sl.p')}:</strong> ${selPlan.icon} ${g('pn.'+selPlan.id)} — ${selPlan.price.toLocaleString()} ${g('pm')}</p>
+    <p><strong>${g('sl.pay')}:</strong> ${pmLabels[selPM]||selPM}</p>`;
+  applyTranslations();
+  setStep(4);
+}
+
+/* ══ TOAST ══ */
+function showToast(msg){
+  let t=document.getElementById('_toast');
+  if(!t){t=document.createElement('div');t.id='_toast';t.style.cssText='position:fixed;bottom:28px;left:50%;transform:translateX(-50%);background:#ff4757;color:#fff;padding:12px 24px;border-radius:50px;font-size:.88rem;font-weight:700;z-index:9999;font-family:inherit;box-shadow:0 8px 28px rgba(255,71,87,.4)';document.body.appendChild(t);}
+  t.textContent=msg;t.style.opacity='1';
+  clearTimeout(t._tid);t._tid=setTimeout(()=>{t.style.opacity='0';},2800);
+}
+
+/* ══ LANG / THEME ══ */
+function setLang(l){
+  lang=l;
+  const html=document.documentElement;
+  html.setAttribute('lang',l);html.setAttribute('dir',l==='ar'?'rtl':'ltr');html.setAttribute('data-lang',l);
+  document.body.style.fontFamily=l==='ar'?"'Cairo',sans-serif":"'Plus Jakarta Sans',sans-serif";
+  document.getElementById('langSel').value=l;
+  buildMarquee();buildFeatures();buildTestimonials();buildPricing();
+  applyTranslations();observeAll();
+}
+function toggleTheme(){
+  theme=theme==='dark'?'light':'dark';
+  document.documentElement.setAttribute('data-theme',theme);
+  updateThemeBtn();
+}
+function updateThemeBtn(){
+  document.getElementById('thIco').textContent=theme==='dark'?'☀️':'🌙';
+  document.getElementById('thLbl').textContent=theme==='dark'?(lang==='ar'?'فاتح':'Light'):(lang==='ar'?'داكن':'Dark');
+}
+function applyTranslations(){
+  document.querySelectorAll('[data-i]').forEach(el=>{
+    const v=g(el.getAttribute('data-i'));
+    if(v&&v!==el.getAttribute('data-i')) el.textContent=v;
+  });
+  updateThemeBtn();
+}
+
+/* ══ CONTACT ══ */
+const CONTACTS={
+  wa:'https://wa.me/YOUR_WHATSAPP_NUMBER',
+  tg:'https://t.me/YOUR_TELEGRAM_USERNAME',
+  fb:'https://facebook.com/YOUR_FACEBOOK_PAGE'
+};
+function handleContact(type){
+  if(CONTACTS[type].includes('YOUR_'))return false;
+  window.open(CONTACTS[type],'_blank','noopener');return false;
+}
+document.getElementById('waCard').href=CONTACTS.wa;
+document.getElementById('tgCard').href=CONTACTS.tg;
+document.getElementById('fbCard').href=CONTACTS.fb;
+
+/* ══ OBSERVE ══ */
+let obs;
+function observeAll(){
+  if(obs)obs.disconnect();
+  obs=new IntersectionObserver(entries=>{
+    entries.forEach((e,i)=>{
+      if(e.isIntersecting){
+        const d=parseFloat(e.target.style.transitionDelay)||i*.07;
+        setTimeout(()=>e.target.classList.add('vis'),d*1000);
+        obs.unobserve(e.target);
+      }
+    });
+  },{threshold:.08});
+  document.querySelectorAll('.fc,.tc,.pc,.ccard').forEach(c=>obs.observe(c));
+}
+function goTo(id){const el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'smooth',block:'start'})}
+function toggleMenu(){document.getElementById('ham').classList.toggle('open');document.getElementById('mobNav').classList.toggle('open')}
+function closeMenu(){document.getElementById('ham').classList.remove('open');document.getElementById('mobNav').classList.remove('open')}
+window.addEventListener('scroll',()=>{document.getElementById('hdr').style.boxShadow=window.scrollY>40?'0 4px 28px rgba(0,0,0,.25)':''});
+
+init();
+</script>
+</body>
+</html>
